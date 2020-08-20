@@ -220,6 +220,21 @@ var config = {
 				return style;
 			}
 		},
+		{
+			group: 'Parking_Lanes',
+			title: 'Vending Parking Tickets',
+			query: 'node[vending=parking_tickets]({{bbox}});out meta;',
+			iconSrc: imgSrc + 'icones/ticket_zone_osm.png',
+			style: function (feature) {
+				var src = imgSrc + 'icones/ticket_zone_osm.png';
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
+				});
+				return style;
+			}
+		},
 
 		// Right Free
 		{
@@ -240,7 +255,7 @@ var config = {
 
 		// Right Free
 		{
-			group: 'Test',
+			group: 'Parking_Lanes',
 			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/p.png',
