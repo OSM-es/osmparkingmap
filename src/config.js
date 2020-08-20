@@ -241,7 +241,7 @@ var config = {
 			group: 'Parking Lanes',
 			title: 'Left No parking',
 			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
+			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -265,7 +265,7 @@ var config = {
 			group: 'Parking Lanes',
 			title: 'Left Free',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
+			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -289,7 +289,7 @@ var config = {
 			group: 'Parking Lanes',
 			title: 'Both No parking',
 			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
+			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
