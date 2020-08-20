@@ -511,7 +511,6 @@ var config = {
 					stroke: stroke
 					image: new ol.style.Icon({
 						src: imgSrc + 'icones/pal_cobertura.png'
-					})
 				});
 				return style;
 			}
