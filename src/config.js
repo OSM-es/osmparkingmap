@@ -166,7 +166,7 @@ var config = {
 
 		// Mobilitat (Exprés.cat)
 		{
-			group: 'Parking Lanes',
+			group: 'Mobilitat',
 			title: 'Right No Stopping',
 			query: '(way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
@@ -188,11 +188,11 @@ var config = {
 			}
 		},
 
-		// Mobilitat (Exprés.cat)
+		// Right No parking
 		{
 			group: 'Parking Lanes',
 			title: 'Right No parking',
-			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w);way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#7c0000',
 			style: function () {
@@ -203,6 +203,53 @@ var config = {
 					color: '#7c0000',
 					width: 3 ,
 					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Left No parking
+		{
+			group: 'Parking Lanes',
+			title: 'Left No parking',
+			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#7c0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#7c0000',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Both No parking
+		{
+			group: 'Parking Lanes',
+			title: 'Both No parking',
+			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#7c0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#7c0000',
+					width: 3 
 				});
 				var style = new ol.style.Style({
 					fill: fill,
