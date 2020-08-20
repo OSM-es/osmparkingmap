@@ -168,9 +168,9 @@ var config = {
 		{
 			group: 'Parking Lanes',
 			title: 'Right Parallel',
-			query: '(way["parking:lane:right"="parallel"]({{bbox}});way(r)({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="parallel"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#40E0D0',
+			iconStyle: 'background-color:#3cff33',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
