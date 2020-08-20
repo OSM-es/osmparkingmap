@@ -272,8 +272,8 @@ var config = {
 		// Right Residents
 		{
 			group: 'Parking_Lanes',
-			title: 'Right Residents',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="residents"]({{bbox}});node(w););out skel;',
+			title: 'Right Residents Green Zone',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right:residents"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
@@ -282,6 +282,30 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#00FF00',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Right Residents Exclusive
+		{
+			group: 'Parking_Lanes',
+			title: 'Right Residents Green Exclusive Zone',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="residents"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#145a32',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#145a32',
 					width: 3 ,
 					lineDash: [10, 10]
 				});
@@ -365,6 +389,54 @@ var config = {
 			}
 		},
 
+		// Left Residents
+		{
+			group: 'Parking_Lanes',
+			title: 'Left Residents Green Zone',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left:residents"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#00FF00',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#00FF00',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Left Residents Exclusive
+		{
+			group: 'Parking_Lanes',
+			title: 'Left Residents Green Exclusive Zone',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="residents"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#145a32',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#145a32',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		// Both No parking
 		{
 			group: 'Parking_Lanes',
@@ -424,6 +496,52 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#0000FF',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Both Residents
+		{
+			group: 'Parking_Lanes',
+			title: 'Both Residents Green Zone',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both:residents"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#00FF00',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#00FF00',
+					width: 3
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Both Residents Exclusive
+		{
+			group: 'Parking_Lanes',
+			title: 'Both Residents Green Exclusive Zone',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="residents"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#145a32',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#145a32',
 					width: 3 
 				});
 				var style = new ol.style.Style({
