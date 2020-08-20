@@ -229,17 +229,25 @@ var config = {
 			iconSrc: imgSrc + 'base/p.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#c9c9c9',
-					width: 3 ,
-					lineDash: [10, 10]
-				});
 				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
+					image: new ol.style.Icon({
+						src: imgSrc + 'icones/pal_cobertura.png'
+					})
+				});
+				return style;
+			}
+		},
+		// Overlay: Iniciatives
+		{
+			group: 'Iniciatives',
+			title: 'Cobertura 112',
+			query: 'node[emergency=access_point]({{bbox}});out skel;',
+			iconSrc: imgSrc + 'icones/pal_cobertura.png',
+			style: function () {
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: imgSrc + 'icones/pal_cobertura.png'
+					})
 				});
 				return style;
 			}
