@@ -223,7 +223,7 @@ var config = {
 
 		// Right Free
 		{
-			group: 'Parking_Lanes',
+			group: 'Test',
 			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/p.png',
@@ -237,17 +237,26 @@ var config = {
 				return style;
 			}
 		},
-		// Overlay: Iniciatives
+
+		// Right Free
 		{
-			group: 'Iniciatives',
-			title: 'Cobertura 112',
-			query: 'node[emergency=access_point]({{bbox}});out skel;',
-			iconSrc: imgSrc + 'icones/pal_cobertura.png',
+			group: 'Test',
+			title: 'Right Free',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/p.png',
+			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#c9c9c9',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
 				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: imgSrc + 'icones/pal_cobertura.png'
-					})
+					fill: fill,
+					stroke: stroke
 				});
 				return style;
 			}
@@ -503,14 +512,12 @@ var config = {
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#c9c9c9',
+					color: '#0000FF',
 					width: 3 
 				});
 				var style = new ol.style.Style({
 					fill: fill,
 					stroke: stroke
-					image: new ol.style.Icon({
-						src: imgSrc + 'icones/pal_cobertura.png'
 				});
 				return style;
 			}
