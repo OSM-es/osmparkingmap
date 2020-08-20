@@ -192,7 +192,7 @@ var config = {
 		{
 			group: 'Parking Lanes',
 			title: 'Left Parallel',
-			query: '(way["parking:lane:left"="parallel"]({{bbox}});node(w);out skel;',
+			query: '(way["parking:lane:left"="parallel"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#3cff33',
 			style: function () {
