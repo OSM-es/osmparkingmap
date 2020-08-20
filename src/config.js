@@ -218,13 +218,13 @@ var config = {
 			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#ffffff',
+			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#ffffff',
+					color: '#c9c9c9',
 					width: 3 ,
 					lineDash: [10, 10]
 				});
@@ -260,6 +260,30 @@ var config = {
 			}
 		},
 
+		// Left Free
+		{
+			group: 'Parking Lanes',
+			title: 'Left Free',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#c9c9c9',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#c9c9c9',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		// Both No parking
 		{
 			group: 'Parking Lanes',
@@ -273,6 +297,29 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#ff0000',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Both Free
+		{
+			group: 'Parking Lanes',
+			title: 'Both Free',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#c9c9c9',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#c9c9c9',
 					width: 3 
 				});
 				var style = new ol.style.Style({
