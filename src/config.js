@@ -167,16 +167,16 @@ var config = {
 		// Mobilitat (Exprés.cat)
 		{
 			group: 'Parking Lanes',
-			title: 'Right Parallel',
-			query: '(way["parking:lane:right"="parallel"]({{bbox}});node(w););out skel;',
+			title: 'Right No Stopping',
+			query: '(way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#3cff33',
+			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#3cff33',
+					color: '#ff0000',
 					width: 3 ,
 					lineDash: [10, 10]
 				});
@@ -189,6 +189,30 @@ var config = {
 		},
 
 		// Mobilitat (Exprés.cat)
+		{
+			group: 'Parking Lanes',
+			title: 'Right No parking',
+			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#7c0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#7c0000',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Parking left lane
 		{
 			group: 'Parking Lanes',
 			title: 'Left Parallel',
