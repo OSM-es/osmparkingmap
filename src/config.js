@@ -194,13 +194,37 @@ var config = {
 			title: 'Right No parking',
 			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w);way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#7c0000',
+			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#7c0000',
+					color: '#ff0000',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Right Free
+		{
+			group: 'Parking Lanes',
+			title: 'Right No parking',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#ffffff',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#ffffff',
 					width: 3 ,
 					lineDash: [10, 10]
 				});
@@ -218,13 +242,13 @@ var config = {
 			title: 'Left No parking',
 			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#7c0000',
+			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#7c0000',
+					color: '#ff0000',
 					width: 3 ,
 					lineDash: [.1, 5]
 				});
@@ -242,13 +266,13 @@ var config = {
 			title: 'Both No parking',
 			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#7c0000',
+			iconStyle: 'background-color:#ff0000',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#7c0000',
+					color: '#ff0000',
 					width: 3 
 				});
 				var style = new ol.style.Style({
@@ -261,7 +285,7 @@ var config = {
 
 		// Parking left lane
 		{
-			group: 'Parking Lanes',
+			group: 'Mobilitat',
 			title: 'Left Parallel',
 			query: '(way["parking:lane:left"="parallel"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
