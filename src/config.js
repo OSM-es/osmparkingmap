@@ -178,7 +178,7 @@ var config = {
 				var stroke = new ol.style.Stroke({
 					color: '#3cff33',
 					width: 3 ,
-					lineDash: [.1, 10]
+					lineDash: [10, 10]
 				});
 				var style = new ol.style.Style({
 					fill: fill,
