@@ -196,6 +196,95 @@ var config = {
 				return style;
 			}
 		},
+		
+				// Parking vending machine
+		
+		{
+			group: 'Parking_Lanes',
+			title: 'Vending Parking Tickets',
+			query: 'node[vending=parking_tickets]({{bbox}});out meta;',
+			iconSrc: imgSrc + 'icones/ticket_zone_osm.png',
+			style: function (feature) {
+				var src = imgSrc + 'icones/ticket_zone_osm.png';
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
+				});
+				return style;
+			}
+		},
+		
+				// Right Ticket
+		{
+			group: 'Parking_Lanes',
+			title: 'Right Ticket',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		
+				// Left Ticket
+		{
+			group: 'Parking_Lanes',
+			title: 'Left Ticket',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/dots.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		
+				// Both Ticket
+		{
+			group: 'Parking_Lanes',
+			title: 'Both Ticket',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
 
 		// Right No parking
 		{
@@ -220,23 +309,56 @@ var config = {
 				return style;
 			}
 		},
+		
+				// Left No parking
 		{
 			group: 'Parking_Lanes',
-			title: 'Vending Parking Tickets',
-			query: 'node[vending=parking_tickets]({{bbox}});out meta;',
-			iconSrc: imgSrc + 'icones/ticket_zone_osm.png',
-			style: function (feature) {
-				var src = imgSrc + 'icones/ticket_zone_osm.png';
+			title: 'Left No parking',
+			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/dots.png',
+			iconStyle: 'background-color:#ff0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#ff0000',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
 				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: src
-					})
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		
+				// Both No parking
+		{
+			group: 'Parking_Lanes',
+			title: 'Both No parking',
+			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#ff0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#ff0000',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
 				});
 				return style;
 			}
 		},
 
-		// Right Free
+
+		// Right Free Test
 		{
 			group: 'Test',
 			title: 'Right Free',
@@ -277,29 +399,7 @@ var config = {
 			}
 		},
 
-		// Right Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Right Ticket',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
-			iconStyle: 'background-color:#0000FF',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
-					width: 3 ,
-					lineDash: [10, 10]
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
 
 		// Right Residents
 		{
@@ -349,29 +449,7 @@ var config = {
 			}
 		},
 
-		// Left No parking
-		{
-			group: 'Parking_Lanes',
-			title: 'Left No parking',
-			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/dots.png',
-			iconStyle: 'background-color:#ff0000',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#ff0000',
-					width: 3 ,
-					lineDash: [.1, 5]
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
 
 		// Left Free
 		{
@@ -397,29 +475,7 @@ var config = {
 			}
 		},
 
-		// Left Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Left Ticket',
-			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/dots.png',
-			iconStyle: 'background-color:#0000FF',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
-					width: 3 ,
-					lineDash: [.1, 5]
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
 
 		// Left Residents
 		{
@@ -469,28 +525,7 @@ var config = {
 			}
 		},
 
-		// Both No parking
-		{
-			group: 'Parking_Lanes',
-			title: 'Both No parking',
-			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#ff0000',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#ff0000',
-					width: 3 
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
 
 		// Both Free
 		{
@@ -515,28 +550,7 @@ var config = {
 			}
 		},
 
-		// Both Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Both Ticket',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#0000FF',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
-					width: 3 
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
 
 		// Both Residents
 		{
