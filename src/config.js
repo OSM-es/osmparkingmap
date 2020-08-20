@@ -226,7 +226,7 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'base/p.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -394,7 +394,7 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Left Residents Green Zone',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left:residents"="free"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -418,7 +418,7 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Left Residents Green Exclusive Zone',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="residents"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#145a32',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -511,7 +511,7 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Both Residents Green Zone',
 			query: '(way["parking:lane:both"="parallel"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both:residents"="free"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -534,7 +534,7 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Both Residents Green Exclusive Zone',
 			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="residents"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#145a32',
 			style: function () {
 				var fill = new ol.style.Fill({
