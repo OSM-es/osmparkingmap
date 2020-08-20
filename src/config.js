@@ -503,12 +503,15 @@ var config = {
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
+					color: '#c9c9c9',
 					width: 3 
 				});
 				var style = new ol.style.Style({
 					fill: fill,
 					stroke: stroke
+					image: new ol.style.Icon({
+						src: imgSrc + 'icones/pal_cobertura.png'
+					})
 				});
 				return style;
 			}
