@@ -199,7 +199,7 @@ var config = {
 
 		// Right No parking
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Right No parking',
 			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w);way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/lineline.png',
@@ -223,7 +223,7 @@ var config = {
 
 		// Right Free
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/lineline.png',
@@ -247,7 +247,7 @@ var config = {
 
 		// Right Ticket
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Right Ticket',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/lineline.png',
@@ -269,9 +269,33 @@ var config = {
 			}
 		},
 
+		// Right Residents
+		{
+			group: 'Parking_Lanes',
+			title: 'Right Residents',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="residents"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#00FF00',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#00FF00',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		// Left No parking
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Left No parking',
 			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/dots.png',
@@ -295,7 +319,7 @@ var config = {
 
 		// Left Free
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Left Free',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/dots.png',
@@ -319,7 +343,7 @@ var config = {
 
 		// Left Ticket
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Left Ticket',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/dots.png',
@@ -343,7 +367,7 @@ var config = {
 
 		// Both No parking
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Both No parking',
 			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
@@ -366,7 +390,7 @@ var config = {
 
 		// Both Free
 		{
-			group: 'Parking Lanes',
+			group: 'Parking_Lanes',
 			title: 'Both Free',
 			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
@@ -389,8 +413,8 @@ var config = {
 
 		// Both Ticket
 		{
-			group: 'Parking Lanes',
-			title: 'Both Free',
+			group: 'Parking_Lanes',
+			title: 'Both Ticket',
 			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#0000FF',
