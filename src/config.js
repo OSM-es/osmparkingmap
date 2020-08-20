@@ -215,7 +215,7 @@ var config = {
 		// Right Free
 		{
 			group: 'Parking Lanes',
-			title: 'Right No parking',
+			title: 'Right Free',
 			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#ffffff',
