@@ -245,6 +245,30 @@ var config = {
 			}
 		},
 
+		// Right Ticket
+		{
+			group: 'Parking Lanes',
+			title: 'Right Ticket',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		// Left No parking
 		{
 			group: 'Parking Lanes',
@@ -293,6 +317,30 @@ var config = {
 			}
 		},
 
+		// Left Ticket
+		{
+			group: 'Parking Lanes',
+			title: 'Left Ticket',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/dots.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		// Both No parking
 		{
 			group: 'Parking Lanes',
@@ -320,7 +368,7 @@ var config = {
 		{
 			group: 'Parking Lanes',
 			title: 'Both Free',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="free"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
@@ -329,6 +377,29 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#c9c9c9',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Both Ticket
+		{
+			group: 'Parking Lanes',
+			title: 'Both Free',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
 					width: 3 
 				});
 				var style = new ol.style.Style({
