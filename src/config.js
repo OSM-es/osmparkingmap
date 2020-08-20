@@ -187,6 +187,30 @@ var config = {
 				return style;
 			}
 		},
+
+		// Mobilitat (Exprés.cat)
+		{
+			group: 'Parking Lanes',
+			title: 'Left Parallel',
+			query: '(way["parking:lane:left"="parallel"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#3cff33',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#3cff33',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
 		{
 			group: 'Coronavirus',
 			title: 'Supermercat',
