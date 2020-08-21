@@ -672,7 +672,7 @@ var config = {
 				});
 				return style;
 			}
-		},
+		//atenció , si voleu recuperar les de sota esborrar-ho tot en aquesta línia i deixar només " }, " sense cometes per tal que el mapa segueixi funcionant
 
 /*	
 		// Parking left lane
