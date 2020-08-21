@@ -643,7 +643,7 @@ var config = {
 				return style;
 			}
 		},
-		{
+	{
 			group: 'Coronavirus',
 			title: 'Hospital i CAPs',
 			query: 'node[amenity=hospital]({{bbox}});out;node[amenity=clinic]({{bbox}});out meta;',
@@ -674,7 +674,7 @@ var config = {
 			}
 		},
 
-
+/*	
 		// Parking left lane
 		{
 			group: 'Mobilitat',
@@ -1009,7 +1009,7 @@ var config = {
 				}
 				var styles = [];
 
-				/* draw the segment line */
+				/* draw the segment line */ /*
 				var width = (parseFloat(maxspeed) / 30) + 0.5;
 				var color = linearColorInterpolation([0, 255, 0], [255, 0, 0], Math.min(maxspeed, 120) / 120);
 
@@ -1023,7 +1023,7 @@ var config = {
 
 				// doesn't show speed sign in roundabout and similars
 				if (!feature.get('junction')) {
-					/* show the speed sign */
+					/* show the speed sign */ /*
 					var coords = feature.getGeometry().getCoordinates();
 
 					styles.push(new ol.style.Style({
@@ -1660,7 +1660,7 @@ var config = {
 					}
 				}
 				return null;
-			}
+			} */
 		}
 	],
 
