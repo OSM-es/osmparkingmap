@@ -604,7 +604,7 @@ var config = {
 			title: 'Motorcycle',
 			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:# #a569bd ',
+			iconStyle: 'background-color:#a569bd ',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
