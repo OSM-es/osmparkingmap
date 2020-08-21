@@ -543,7 +543,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
-			query: '(node["capacity:disabled"]({{bbox}});way["capacity:disabled"]({{bbox}});relation["capacity:disabled"]({{bbox}}););out skel;',
+			query: '(node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/symbols/amenity/motorcycle_parking.svg',
 			style: function () {
 				var style = new ol.style.Style({
