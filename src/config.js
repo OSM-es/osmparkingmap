@@ -151,51 +151,9 @@ var config = {
 	* style: function see https://openlayers.org/en/latest/apidoc/module-ol_style_Style-Style.html
 	*/
 	overlays: [
-		// Overlay: Coronavirus
-		{
-			group: 'Coronavirus',
-			title: 'Establiments oberts',
-			query: 'node["opening_hours:covid19"]({{bbox}});out meta;',
-			iconSrc: imgSrc + 'coronavirus.svg',
-			style: function (feature) {
-				var src = '';
-				if (feature.get('amenity')) {
-					src = imgSrc + 'icones/symbols/amenity/' + feature.get('amenity') + '.svg';
-				} else if (feature.get('shop')){
-					src = imgSrc + 'icones/symbols/shop/' + feature.get('shop') + '.svg';
-				}
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: src
-					})
-				});
-				return style;
-			}
-		},
 
-		// Mobilitat (Exprés.cat)
-		{
-			group: 'Mobilitat',
-			title: 'Right No Stopping',
-			query: '(way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#ff0000',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#ff0000',
-					width: 3 ,
-					lineDash: [10, 10]
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+
+
 		
 				// Parking vending machine
 		
@@ -357,23 +315,6 @@ var config = {
 			}
 		},
 
-
-		// Right Free Test
-		{
-			group: 'Test',
-			title: 'Right Free',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/p.png',
-			iconStyle: 'background-color:#c9c9c9',
-			style: function () {
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: imgSrc + 'icones/pal_cobertura.png'
-					})
-				});
-				return style;
-			}
-		},
 
 		// Right Free
 		{
@@ -642,21 +583,7 @@ var config = {
 				});
 				return style;
 			}
-		},
-	{
-			group: 'Coronavirus',
-			title: 'Hospital i CAPs',
-			query: 'node[amenity=hospital]({{bbox}});out;node[amenity=clinic]({{bbox}});out meta;',
-			iconSrc: imgSrc + 'icones/symbols/amenity/hospital.svg',
-			style: function (feature) {
-				var src = imgSrc + 'icones/symbols/amenity/hospital.svg';
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: src
-					})
-				});
-				return style;
-			}
+
 		},
 		{
 			group: 'Parking_Lanes',
@@ -697,7 +624,89 @@ var config = {
 				});
 				return style;
 			}
+			
+					},
+					
+					
+
+		// Right Free Test
+		{
+			group: 'Test',
+			title: 'Right Free',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/p.png',
+			iconStyle: 'background-color:#c9c9c9',
+			style: function () {
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: imgSrc + 'icones/pal_cobertura.png'
+					})
+				});
+				return style;
+			}
 		},
+	{
+			group: 'Coronavirus',
+			title: 'Hospital i CAPs',
+			query: 'node[amenity=hospital]({{bbox}});out;node[amenity=clinic]({{bbox}});out meta;',
+			iconSrc: imgSrc + 'icones/symbols/amenity/hospital.svg',
+			style: function (feature) {
+				var src = imgSrc + 'icones/symbols/amenity/hospital.svg';
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
+				});
+				return style;
+			}
+		},
+		
+				// Mobilitat (Exprés.cat)
+		{
+			group: 'Mobilitat',
+			title: 'Right No Stopping',
+			query: '(way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#ff0000',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#ff0000',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		
+				// Overlay: Coronavirus
+		{
+			group: 'Coronavirus',
+			title: 'Establiments oberts',
+			query: 'node["opening_hours:covid19"]({{bbox}});out meta;',
+			iconSrc: imgSrc + 'coronavirus.svg',
+			style: function (feature) {
+				var src = '';
+				if (feature.get('amenity')) {
+					src = imgSrc + 'icones/symbols/amenity/' + feature.get('amenity') + '.svg';
+				} else if (feature.get('shop')){
+					src = imgSrc + 'icones/symbols/shop/' + feature.get('shop') + '.svg';
+				}
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
+				});
+				return style;
+			}
+		},
+		
 		{
 			group: 'Coronavirus',
 			title: 'Supermercat',
