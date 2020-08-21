@@ -589,8 +589,8 @@ var config = {
 				// Both Ticket
 		{
 			group: 'Parking_Lanes',
-			title: 'Motorcycle',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
+			title: 'Motorcycle2',
+			query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#0000FF',
 			style: function () {
