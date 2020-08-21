@@ -566,7 +566,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
+			query: '(way["building"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#a569bd',
 			style: function () {
