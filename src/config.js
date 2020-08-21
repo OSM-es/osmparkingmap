@@ -538,29 +538,6 @@ var config = {
 				return style;
 			}
 		},
-		
-				// Both Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Both Ticket',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#0000FF',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
-					width: 3 
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
 
 		// Motorcycle parking
 		{
@@ -571,7 +548,7 @@ var config = {
 			iconStyle: 'background-color:#a569bd',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
+					color: 'rgba(157,6,251,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#a569bd',
