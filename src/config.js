@@ -543,7 +543,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Disabled parking space2',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w);node["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity=motorcycle"]({{bbox}});node(w);node["amenity=parking"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'accessibilitat/capacity_disabled.svg',
 			style: function () {
 				var style = new ol.style.Style({
