@@ -649,6 +649,8 @@ query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{
           offset: [52, 0],
           opacity: 1,
           scale: 0.25,
+		  height: 52,
+		  width: 52,
 						src: src
 					})
 				});
