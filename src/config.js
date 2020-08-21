@@ -543,13 +543,14 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
-			query: '(way["amenity"="motorcycle_parking"]({{bbox}});node(w);node["amenity"="motorcycle_parking"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'symbols/amenity/motorcycle_parking.svg',
+			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'icones/symbols/amenity/motorcycle_parking.svg',
 			style: function () {
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
 						scale: 0.04,
-						src: imgSrc + 'symbols/amenity/motorcycle_parking.svg'
+						src: imgSrc + 'icones/symbols/amenity/motorcycle_parking.svg'
+
 					})
 				});
 				return style;
