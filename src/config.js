@@ -635,9 +635,6 @@ var config = {
 				return style;
 			}
 		},
-		
-				// Disabled parking space
-		
 		{
 			group: 'Parking_Lanes',
 			title: 'Disabled parking space',
@@ -647,14 +644,13 @@ query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{
 				var src = imgSrc + 'icones/capacity_disabled.png';
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						src: src,
-					size = [115, 233]
-						
+						src: src
 					})
 				});
 				return style;
 			}
 		},
+
 
 		// Parking left lane
 		{
