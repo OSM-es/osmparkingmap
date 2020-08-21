@@ -544,19 +544,13 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
 			query: '(way["amenity"="motorcycle_parking"]({{bbox}});node(w);node["amenity"="motorcycle_parking"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#a569bd',
+			iconSrc: imgSrc + 'symbols/amenity/motorcycle_parking.svg',
 			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#a569bd',
-					width: 3 
-				});
 				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
+					image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'symbols/amenity/motorcycle_parking.svg'
+					})
 				});
 				return style;
 			}
