@@ -544,18 +544,27 @@ var config = {
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
 			query: '(node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones/symbols/amenity/motorcycle_parking.svg',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#00FF00',
 			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,255,0,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#00FF00',
+					width: 1.25
+				});
 				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						scale: 0.04,
-						src: imgSrc + 'icones/symbols/amenity/motorcycle_parking.svg'
-
-					})
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
 				});
 				return style;
 			}
-
 		},
 		{
 			group: 'Parking_Lanes',
