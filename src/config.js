@@ -537,78 +537,25 @@ var config = {
 				});
 				return style;
 			}
-		},
-		
-				// Both Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Both Ticket',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#0000FF',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#0000FF',
-					width: 3 
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
+				},
 
-		// Motorcycle parking
+		// Both Residents Exclusive
 		{
 			group: 'Parking_Lanes',
-			title: 'Motorcycle',
+			title: 'Disabled parking space2',
 			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w);node["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#a569bd',
+			iconSrc: imgSrc + 'accessibilitat/capacity_disabled.svg',
 			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#a569bd',
-					width: 3 
-				});
 				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-
-		},
-		
-				// Both Ticket
-		{
-			group: 'Parking_Lanes',
-			title: 'Motorcycle2',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#a569bd',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(64,224,208,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#a569bd',
-					width: 3 
-				});
-				var style = new ol.style.Style({
-					fill: fill,
-					stroke: stroke
+					image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'accessibilitat/capacity_disabled.svg'
+					})
 				});
 				return style;
 			}
 		},
-		{
+			{
 			group: 'Parking_Lanes',
 			title: 'Disabled parking space',
 			query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
