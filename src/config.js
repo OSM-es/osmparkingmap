@@ -645,10 +645,6 @@ query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
 						anchor: [0.5, 0.5],
-          size: [52, 52],
-          offset: [52, 0],
-          opacity: 1,
-          scale: 0.25,
 		  height: 52,
 		  width: 52,
 						src: src
