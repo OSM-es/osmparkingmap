@@ -647,7 +647,9 @@ query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{
 				var src = imgSrc + 'icones/capacity_disabled.svg';
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						src: src
+						src: src,
+						size: [32,32]
+						
 					})
 				});
 				return style;
