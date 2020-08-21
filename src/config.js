@@ -638,16 +638,13 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Disabled parking space',
-query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'icones/capacity_disabled.svg',
-			style: function (feature) {
-				var src = imgSrc + 'icones/capacity_disabled.png';
+			query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'accessibilitat/capacity_disabled.svg',
+			style: function () {
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						anchor: [0.5, 0.5],
-		  height: 52,
-		  width: 52,
-						src: src
+						scale: 0.04,
+						src: imgSrc + 'accessibilitat/capacity_disabled.svg'
 					})
 				});
 				return style;
