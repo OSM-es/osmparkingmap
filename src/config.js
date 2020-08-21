@@ -648,8 +648,8 @@ query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
 						src: src,
-						scale: 1.0,
-						size: [32, 32]
+					size = [115, 233],
+                    scale = 0.05
 						
 					})
 				});
