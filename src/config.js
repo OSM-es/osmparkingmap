@@ -560,7 +560,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Disabled parking space',
-			query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
+			query: '(way["capacity:disabled"]({{bbox}});node["capacity:disabled"]({{bbox}}););out skel;',
 			iconSrc: imgSrc + 'accessibilitat/capacity_disabled.svg',
 			style: function () {
 				var style = new ol.style.Style({
