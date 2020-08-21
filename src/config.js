@@ -590,7 +590,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Motorcycle2',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w);node["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#a569bd',
 			style: function () {
