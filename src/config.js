@@ -551,7 +551,35 @@ var config = {
 					color: 'rgba(157,6,251,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#00FF00',
+					color: '#9D06FB',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Motorcycle parking
+		{
+			group: 'Parking_Lanes',
+			title: 'Delivery',
+			query: '(node["capacity:delivery"]({{bbox}});node(w);way["capacity:delivery"]({{bbox}});node(w);relation["capacity:delivery"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#FBEA00',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(251,155,2,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#FBEA00',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
