@@ -542,7 +542,35 @@ var config = {
 		// Motorcycle parking
 		{
 			group: 'Parking_Lanes',
-			title: 'Motorcycle',
+			title: 'Motorcycle parking',
+			query: '(node["amenity"="motorcycle_parking"]({{bbox}});node(w);way["amenity"="motorcycle_parking"]({{bbox}});node(w);relation["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#9D06FB',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(157,6,251,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#00FF00',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		
+		// capacity:disabled
+		{
+			group: 'Parking_Lanes',
+			title: 'Disabled parking space',
 			query: '(node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/circle.svg',
 			iconStyle: 'background-color:#00FF00',
@@ -562,21 +590,6 @@ var config = {
 					}),
 					fill: fill,
 					stroke: stroke
-				});
-				return style;
-			}
-		},
-		{
-			group: 'Parking_Lanes',
-			title: 'Disabled parking space',
-			query: '(way["capacity:disabled"]({{bbox}});node["capacity:disabled"]({{bbox}}););out skel;',
-			iconSrc: imgSrc + 'accessibilitat/capacity_disabled.svg',
-			style: function () {
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						scale: 0.04,
-						src: imgSrc + 'accessibilitat/capacity_disabled.svg'
-					})
 				});
 				return style;
 			}
