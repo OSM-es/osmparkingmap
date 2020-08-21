@@ -644,11 +644,12 @@ var config = {
 query: '(way["capacity:disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones/capacity_disabled.svg',
 			style: function (feature) {
-				var src = imgSrc + 'icones/capacity_disabled.svg';
+				var src = imgSrc + 'icones/capacity_disabled.png';
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
 						src: src,
-						imgSize: [32, 32]
+						scale: 1.0,
+						size: [32, 32]
 						
 					})
 				});
