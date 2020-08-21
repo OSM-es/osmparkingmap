@@ -602,20 +602,35 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Motorcycle',
-			query: '(way["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
+			query: '(nw["amenity=motorcycle_parking"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
-			iconStyle: 'background-color:#a569bd ',
+			iconStyle: 'background-color:#a569bd',
 			style: function () {
 				var fill = new ol.style.Fill({
 					color: 'rgba(64,224,208,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '# #a569bd ',
+					color: '#a569bd',
 					width: 3 
 				});
 				var style = new ol.style.Style({
 					fill: fill,
 					stroke: stroke
+				});
+				return style;
+			}
+		},
+		{
+			group: 'Coronavirus',
+			title: 'Hospital i CAPs',
+			query: 'node[amenity=hospital]({{bbox}});out;node[amenity=clinic]({{bbox}});out meta;',
+			iconSrc: imgSrc + 'icones/symbols/amenity/hospital.svg',
+			style: function (feature) {
+				var src = imgSrc + 'icones/symbols/amenity/hospital.svg';
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
 				});
 				return style;
 			}
