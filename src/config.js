@@ -15,12 +15,12 @@ var config = {
 	},
 	i18n: {
 		layersLabel: 'Layers',
-		editWith: 'Editar amb:',
-		openWith: 'Obre amb:',
-		checkTools: 'Validació:',
-		copyDialog: 'S\'ha copiat l\'enllaç al porta-retalls.',
+		editWith: 'Edit with:',
+		openWith: 'Open with:',
+		checkTools: 'Validation:',
+		copyDialog: 'S\'ha copiat l\'enllaç al porta-retalls.Enlace copiado. Link has been copied',
 		nodeLabel: 'Node:',
-		noNodesFound: 'No s\'ha trobat cap resultat en aquesta àrea.',
+		noNodesFound: 'No nodes found.',
 		wayLabel: 'Way:'
 	},
 	overpassApi: function(){
@@ -543,7 +543,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Customers',
-			query: '(way["parking:condition:both"="customers"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:condition:left"="customers"]({{bbox}});node(w);way["parking:condition:right"="customers"]({{bbox}});node(w);way["parking:condition:both"="customers"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#01F6F2',
 			style: function () {
