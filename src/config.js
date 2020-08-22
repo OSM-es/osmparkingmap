@@ -645,6 +645,23 @@ var config = {
 				return style;
 			}
 		},
+
+		// Motorcycle parking
+		{
+			group: 'Parking_Lanes',
+			title: 'Charging Station',
+			query: '(node["amenity=charging_station"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones/symbols/amenity/charging_station.svg',
+			style: function (feature) {
+				var src = imgSrc + 'icones/symbols/amenity/charging_station.svg';
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						src: src
+					})
+				});
+				return style;
+			}
+		},
 		
 		// capacity:disabled
 		{
