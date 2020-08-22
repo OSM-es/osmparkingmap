@@ -650,7 +650,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Charging Station',
-			query: '(node["amenity=charging_station"]({{bbox}});node(w););out meta;',
+			query: '(node["amenity"="charging_station"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/symbols/amenity/charging_station.svg',
 			style: function (feature) {
 				var src = imgSrc + 'icones/symbols/amenity/charging_station.svg';
@@ -667,7 +667,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Entrance garage',
-			query: '(node["entrance=garage"]({{bbox}});node(w););out meta;',
+			query: '(node["entrance"="garage"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/ES_R308e.png',
 			style: function () {
 				var style = new ol.style.Style({
