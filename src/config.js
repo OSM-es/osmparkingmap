@@ -162,16 +162,17 @@ var config = {
 			title: 'Vending Parking Tickets',
 			query: 'node[vending=parking_tickets]({{bbox}});out meta;',
 			iconSrc: imgSrc + 'icones/ticket_zone_osm.png',
-			style: function (feature) {
-				var src = imgSrc + 'icones/ticket_zone_osm.png';
+			style: function () {
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						src: src
+						scale: 0.4,
+						src: imgSrc + 'icones/ticket_zone_osm.png'
 					})
 				});
 				return style;
 			}
 		},
+
 		
 				// Right Ticket
 		{
@@ -646,7 +647,7 @@ var config = {
 			}
 		},
 
-		// Motorcycle parking
+		// Charging Station
 		{
 			group: 'Parking_Lanes',
 			title: 'Charging Station',
@@ -663,7 +664,7 @@ var config = {
 			}
 		},
 
-		// Motorcycle parking
+		// Entrance garage
 		{
 			group: 'Parking_Lanes',
 			title: 'Entrance garage',
