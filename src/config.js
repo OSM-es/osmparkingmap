@@ -537,6 +537,29 @@ var config = {
 				});
 				return style;
 			}
+				},
+
+		// Both Residents Exclusive
+		{
+			group: 'Parking_Lanes',
+			title: 'Customers',
+			query: '(way["parking:condition:both"="customers"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/line.png',
+			iconStyle: 'background-color:#01F6F2',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(1,246,242,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#01F6F2',
+					width: 3 
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
 		},
 
 		// Motorcycle parking
