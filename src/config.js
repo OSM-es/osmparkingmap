@@ -593,6 +593,34 @@ var config = {
 		// Motorcycle parking
 		{
 			group: 'Parking_Lanes',
+			title: 'Parking with fee',
+			query: '(node["amenity"="parking"][fee=yes]({{bbox}});node(w);way["amenity"="parking"][fee=yes]({{bbox}});node(w);relation["amenity"="parking"][fee=yes]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#154360',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(21,67,96,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#154360',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Motorcycle parking
+		{
+			group: 'Parking_Lanes',
 			title: 'Delivery',
 			query: '(node["capacity:delivery"]({{bbox}});node(w);way["capacity:delivery"]({{bbox}});node(w);relation["capacity:delivery"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/circle.svg',
