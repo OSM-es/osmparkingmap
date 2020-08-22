@@ -590,7 +590,7 @@ var config = {
 			}
 		},
 
-		// Motorcycle parking
+		// Parking with fee
 		{
 			group: 'Parking_Lanes',
 			title: 'Parking with fee',
