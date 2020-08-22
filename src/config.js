@@ -662,6 +662,23 @@ var config = {
 				return style;
 			}
 		},
+
+		// Motorcycle parking
+		{
+			group: 'Parking_Lanes',
+			title: 'Entrance garage',
+			query: '(node["entrance=garage"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones/ES_R308e.png',
+			style: function () {
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'icones/ES_R308e.png'
+					})
+				});
+				return style;
+			}
+		},
 		
 		// capacity:disabled
 		{
