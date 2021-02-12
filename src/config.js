@@ -681,7 +681,7 @@ var config = {
 			}
 		},
 		
-		// capacity:disabled
+		// parking street_side
 		{
 			group: 'Parking_Lanes',
 			title: 'Street side parking',
@@ -707,6 +707,7 @@ var config = {
 				});
 				return style;
 			}
+		},
 		
 		// capacity:disabled
 		{
