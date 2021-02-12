@@ -684,6 +684,33 @@ var config = {
 		// capacity:disabled
 		{
 			group: 'Parking_Lanes',
+			title: 'Street side parking',
+			query: '(node["parking"="street_side"]({{bbox}});node(w);way["parking"="street_side"]({{bbox}});node(w);relation["parking"="street_side"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,0,255,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		
+		// capacity:disabled
+		{
+			group: 'Parking_Lanes',
 			title: 'Disabled parking space',
 			query: '(node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/circle.svg',
