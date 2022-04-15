@@ -40,8 +40,16 @@ Directamente se puede modificar la página editando los archivos correspondiente
 * index.js contiene el orquestador para utilizar OpenLayers (sólo se requiere modificar para añadir nuevas funcionalidades).
 * config.js contiene la definición de las capas, idioma y características que se quieren mostrar.
 
+
+# 2-Mapcomplete
+
+Utilitzem un repte personalitzat de [Mapcomplete](https://mapcomplete.osm.be)-[font]-(https://github.com/pietervdvn/MapComplete) per tal d'aportar les dades que faltin, fent-ho en idioma "natural" (no de la màquina ni d'Openstreetmap) i des de qualsevol dispositiu mòbil amb l'únic requisit de [registrar-se com a usuari/a d'OpenStreetMap](https://www.openstreetmap.org/login).
+
+# [Completador de Mapcomplete sobre aparcaments](https://mapcomplete.osm.be/theme.html?userlayout=https://raw.githubusercontent.com/yopaseopor/mcquests/main/libraries.json)
+
 # [Ejemplo del mapa funcionando](https://osm-es.github.io/osmparkingmap)
 
 # Agradecimientos
 
 A la [Comunidad Catalana de Openstreetmap](https://t.me/osmcat) y a [OSM España](https://t.me/osmes) por permitir estos mapas, así como a los desarrolladores que han colaborado. 
+

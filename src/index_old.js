@@ -30,13 +30,7 @@ $(function () {
 				vectorProperties = overlay,
 				vector;
 
-		if (overlay['geojson'] !== undefined) {
-      var vectorSource = new ol.source.Vector({
-        format: new ol.format.GeoJSON(),
-        url: overlay['geojson']
-      })
-    } else {
-			var vectorSource = new ol.source.Vector({ 
+		var vectorSource = new ol.source.Vector({
 			format: new ol.format.OSMXML2(),
 			loader: function (extent, resolution, projection) {
 				loading.show();
@@ -97,7 +91,7 @@ $(function () {
 			},
 			strategy: ol.loadingstrategy.bbox
 		});
-	}
+
 		vectorProperties['source'] = vectorSource;
 		vectorProperties['visible'] = false;
 
@@ -331,23 +325,12 @@ $(function () {
 	// Info Control
 	var infoControlBuild = function () {
 		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-infobutton').html($('<button type="button"><i class="fa fa-info-circle"></i></button>').on('click', function () {
-			window.location.href = 'https://github.com/yopaseopor/osmparkingmap';
+			window.location.href = 'https://github.com/Ripollx/osmcatmap2';
 		}));
 		return container[0];
 	};
 	map.addControl(new ol.control.Control({
 		element: infoControlBuild()
-	}));
-	
-		// Info Control
-	var infoControlBuild2 = function () {
-		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-infobutton2').html($('<button type="button"><i class="fa fa-search-plus"></i></button>').on('click', function () {
-			window.location.href = 'https://mapcomplete.osm.be/index.html?userlayout=https://raw.githubusercontent.com/yopaseopor/mcquests/main/parkingspaces.json';
-		}));
-		return container[0];
-	};
-	map.addControl(new ol.control.Control({
-		element: infoControlBuild2()
 	}));
 
 	// Copy permalink button
