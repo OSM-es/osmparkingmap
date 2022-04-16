@@ -76,7 +76,7 @@ var config = {
 			title: 'Topotresc',
 			iconSrc: imgSrc + 'topotresc_layer.png',
 			source: new ol.source.XYZ({
-				attributions: 'Map data <a href="https://www.topotresc.com/" target="_blank">TopoTresk</a> by <a href="https://github.com/aresta/topotresc" target="_blank">aresta</a>',
+				attributions: 'Map data <a href="https://www.topotresc.com/" target="_blank">TopoTresc</a> by <a href="https://github.com/aresta/topotresc" target="_blank">aresta</a>',
 				url: 'https://api.topotresc.com/tiles/{z}/{x}/{y}'
 			}),
 			visible: false
@@ -753,42 +753,96 @@ var config = {
 
 },
 
-		{
-			group: 'Accessibilitat',
-			title: 'Biblioteca designada',
-			query: '(node["amenity"="library"]["wheelchair"="designated"]({{bbox}});node(w);way["amenity"="library"]["wheelchair"="designated"]({{bbox}});node(w);relation["amenity"="library"]["wheelchair"="designated"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'accessibilitat/wheelchair_designated.svg',
-			iconStyle: 'background-color:#00FF00',
+	{
+			group: 'Test',
+			title: 'building',
+			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
-				var key_regex = /^name$/
-				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
-				var name = feature.get(name_key) || '';
-				var fill = new ol.style.Fill({
-					color: 'rgba(0,0,255,0.4)'
-				});
-
-				var stroke = new ol.style.Stroke({
-					color: '#000000',
-					width: 1.25
-				});
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
+				var name = feature.get('name') || '';
+				var styles = {
+					'amenity': {
+						'parking': new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: 'rgba(170, 170, 170, 1.0)',
+								width: 1
+							}),
+							fill: new ol.style.Fill({
+								color: 'rgba(170, 170, 170, 0.3)'
+							})
+						})
+					},
+					'building': {
+						'.*': new ol.style.Style({
+							zIndex: 100,
+							stroke: new ol.style.Stroke({
+								color: 'rgba(246, 99, 79, 1.0)',
+								width: 1
+							}),
+							fill: new ol.style.Fill({
+								color: 'rgba(246, 99, 79, 0.3)'
+							}),
+							text: new ol.style.Text({
+								text: name
+							})
+						})
+					},
+					'highway': {
+						'service': new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: 'rgba(255, 255, 255, 1.0)',
+								width: 2
+							}),
 							text: new ol.style.Text({
 								text: name,
-								color: 'rgba(0,0,255,0.4)',
-								font: '10px Verdana',
-								offsetX : 0,
-								offsetY : 30
+								placement: 'line'
+							})
+						}),
+						'.*': new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: 'rgba(255, 255, 255, 1.0)',
+								width: 3
 							}),
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
+							text: new ol.style.Text({
+								text: name
+							})
+						})
+					},
+					'landuse': {
+						'forest|grass|allotments': new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: 'rgba(140, 208, 95, 1.0)',
+								width: 1
+							}),
+							fill: new ol.style.Fill({
+								color: 'rgba(140, 208, 95, 0.3)'
+							})
+						})
+					},
+					'natural': {
+						'tree': new ol.style.Style({
+							image: new ol.style.Circle({
+								radius: 2,
+								fill: new ol.style.Fill({
+									color: 'rgba(140, 208, 95, 1.0)'
+								}),
+								stroke: null
+							})
+						})
+					}
+				};
+				for (var key in styles) {
+					var value = feature.get(key);
+					if (value !== undefined) {
+						for (var regexp in styles[key]) {
+							if (new RegExp(regexp).test(value)) {
+								return styles[key][regexp];
+							}
+						}
+					}
+				}
+				return null;
+			} */
+
 
 },
 		{
