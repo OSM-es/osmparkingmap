@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="480"
+   width="480"
+   version="1.1"
+   id="svg1097"
+   sodipodi:docname="presidents.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1101" />
+  <sodipodi:namedview
+     id="namedview1099"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1"
+     inkscape:cx="230"
+     inkscape:cy="230"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1097" />
+  <path
+     d="m30.856274 5.7720243h420.004816c10.81582.7906802 23.07189 11.8437647 23.66646 24.8647647v418.806511c.04967 10.31854-11.79351 24.19224-25.16434 24.86477h-419.405663c-9.523815-.58318-24.4313132-15.37852-24.8647639-25.16434l.5991509-418.207366c-1.0815617-6.302442 14.286068-25.2982414 25.16434-25.1643397z"
+     fill="#fff"
+     fill-rule="evenodd"
+     stroke="#000"
+     stroke-width="2"
+     id="path1067" />
+  <path
+     d="m35.1875 16.78125c-11.760613-.514916-18.473169 7.51921-18.03125 20.375v406.40625c.046553 8.6672 3.728171 19.07043 15.6875 19.28125l414.4375-.03125c11.95933-.2108 15.6722-10.61405 15.71875-19.28125v-406.4375c.44191-12.855791-6.27063-20.88992-18.03125-20.375z"
+     fill="#039"
+     fill-rule="evenodd"
+     id="path1069" />
+  <path
+     d="m 71.265846,63.862977 v 42.402303 h 29.591404 c 7.39777,7e-5 12.91608,-2.22529 16.55494,-6.676107 3.63869,-4.450656 5.45808,-9.292333 5.45817,-14.525043 -9e-5,-7.939057 -2.85698,-13.773127 -8.57068,-17.502232 -3.66893,-2.465836 -8.39031,-3.698813 -14.16418,-3.698921 z M 51.327737,176.45464 V 45.00748 h 47.725156 c 5.112267,1.31e-4 10.029127,0.541437 14.750587,1.623918 4.72132,1.082741 9.63817,3.608833 14.75059,7.578285 3.96949,3.067521 7.33761,7.292712 10.10438,12.675586 2.76657,5.383091 4.14991,11.623138 4.15002,18.720167 -1.1e-4,9.38272 -3.50356,18.314264 -10.51036,26.794654 -7.007,8.48051 -17.24669,12.72074 -30.71912,12.72069 H 71.265846 v 51.33386 z"
+     fill="#ffffff"
+     id="path1071"
+     style="stroke-width:0.999999" />
+  <g
+     id="g21063"
+     transform="matrix(14.414172,0,0,14.414172,72.805,94.966001)"
+     style="stroke-width:0.0693762;fill:#ffffff">
+    <g
+       id="c14_house"
+       style="stroke-width:0.0693762;fill:#ffffff">
+      <path
+         d="m 3.588,24.297 c 0,0 -0.024,0.59 0.553,0.59 0.718,0 6.652,-0.008 6.652,-0.008 l 0.01,-5.451 c 0,0 -0.094,-0.898 0.777,-0.898 h 2.761 c 1.031,0 0.968,0.898 0.968,0.898 l -0.012,5.434 c 0,0 5.628,0 6.512,0 0.732,0 0.699,-0.734 0.699,-0.734 V 14.076 L 13.33,5.913 3.588,14.077 c 0,0 0,10.22 0,10.22 z"
+         id="path21055"
+         style="stroke-width:0.0693762;fill:#ffffff" />
+      <path
+         d="m 0,13.317 c 0,0 0.826,1.524 2.631,0 L 13.412,4.196 23.519,13.26 c 2.088,1.506 2.871,0 2.871,0 L 13.412,1.504 Z"
+         id="path21057"
+         style="stroke-width:0.0693762;fill:#ffffff" />
+      <polygon
+         points="23.273,9.525 23.273,4.175 20.674,4.175 20.685,7.328 "
+         id="polygon21059"
+         style="stroke-width:0.0693762;fill:#ffffff" />
+    </g>
+    <g
+       id="Capa_1_216_"
+       style="stroke-width:0.0693762;fill:#ffffff" />
+  </g>
+</svg>
