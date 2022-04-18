@@ -848,7 +848,7 @@ var config = {
 
 	{
 			group: 'Test',
-			title: 'building3',
+			title: 'building4 ',
 			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
@@ -881,6 +881,22 @@ var config = {
 					},
 					'parking:condition': {
 						'free': new ol.style.Style({
+							stroke: new ol.style.Stroke({
+								color: 'rgba(0,128,0, 1.0)',
+								width: 2
+							}),
+							fill: new ol.style.Fill({
+								color: 'rgba(0,128,0, 0.3)'
+							}),
+							text: new ol.style.Text({
+								text: name
+							})
+						}),
+						'disc': new ol.style.Style({
+							image: new ol.style.Icon({
+							scale: 1,
+							src: imgSrc + 'icones/ES_R308e.png'
+							}),
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,128,0, 1.0)',
 								width: 2
