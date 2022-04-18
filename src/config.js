@@ -907,7 +907,7 @@ var config = {
 						scale: 0.04,
 						src: imgSrc + 'icones/ES_R308e.png'
 							})
-						})
+						}) })
 					},
 					'natural': {
 						'tree': new ol.style.Style({
