@@ -880,7 +880,7 @@ var config = {
 						})
 					},
 					'parking:condition': {
-						'disabled': new ol.style.Style({
+						'free': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,128,0, 1.0)',
 								width: 2
