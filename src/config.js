@@ -957,7 +957,7 @@ var config = {
 				});
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						scale: 0.04,
+						scale: 1,
 						src: imgSrc + 'icones/ES_R308e.png'
 					}),
 							text: new ol.style.Text({
