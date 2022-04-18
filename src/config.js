@@ -848,7 +848,7 @@ var config = {
 
 	{
 			group: 'Test',
-			title: 'building4 ',
+			title: 'building5',
 			query: '(node["amenity"="parking_space"]({{bbox}});rel(bn)->.foo;way(bn)["amenity"="parking_space"];node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
@@ -955,8 +955,8 @@ var config = {
 },
 		{
 			group: 'Test',
-			title: '3consultes',
-			query: '(node["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);way["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);relation["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
+			title: '3consultes2',
+			query: '(node["amenity"="parking_space"]({{bbox}});rel(bn)->.foo;way(bn)["amenity"="parking_space"];node(w)->.foo;rel(bw););out;',
 			iconSrc: imgSrc + 'icones/ES_R308e.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function (feature) {
