@@ -884,7 +884,13 @@ var config = {
 							image: new ol.style.Icon({
 						scale: 0.04,
 						src: imgSrc + 'icones/ES_R308e.png'
-					}),
+							})
+						}),
+						'ticket': new ol.style.Style({
+							image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'icones/ES_R308e.png'
+							}),
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,128,0, 1.0)',
 								width: 2
@@ -896,7 +902,7 @@ var config = {
 								text: name
 							})
 						}),
-						'ticket': new ol.style.Style({
+						'.*': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,0,255, 1.0)',
 								width: 3
