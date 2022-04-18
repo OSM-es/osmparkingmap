@@ -797,7 +797,7 @@ var config = {
 								placement: 'line'
 							})
 						}),
-						'parking_spaces': new ol.style.Style({
+						'recycling': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(255, 0, 255, 1.0)',
 								width: 2
