@@ -885,9 +885,11 @@ var config = {
 								color: 'rgba(0,128,0, 1.0)',
 								width: 2
 							}),
+							fill: new ol.style.Fill({
+								color: 'rgba(0,128,0, 0.3)'
+							}),
 							text: new ol.style.Text({
-								text: name,
-								placement: 'line'
+								text: name
 							})
 						}),
 						'ticket': new ol.style.Style({
