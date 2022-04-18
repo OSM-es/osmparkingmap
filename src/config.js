@@ -955,7 +955,7 @@ var config = {
 },
 		{
 			group: 'Test',
-			title: '3consultes',
+			title: '3consultes2',
 			query: '(node["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});way["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});relation["amenity"="parking_space"]["parking:condition"="free"]({{bbox}}););out meta;',
 			iconSrc: imgSrc + 'icones/ES_R308e.png',
 			iconStyle: 'background-color:#00FF00',
