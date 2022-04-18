@@ -876,7 +876,7 @@ var config = {
 							})
 						})
 					},
-					'parking:condition': {
+					'recycling': {
 						'.*': new ol.style.Style({
 							zIndex: 100,
 							stroke: new ol.style.Stroke({
