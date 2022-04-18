@@ -890,7 +890,7 @@ var config = {
 								width: 2
 							}),
 							fill: new ol.style.Fill({
-								color: 'rgba(0,128,0, 0.3)'
+								color: 'rgba(246, 99, 79, 0.3)'
 							}),
 							text: new ol.style.Text({
 								text: name
