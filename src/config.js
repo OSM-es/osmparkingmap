@@ -772,7 +772,7 @@ var config = {
 						})
 					},
 					'amenity': {
-						'.*': new ol.style.Style({
+						'cafe': new ol.style.Style({
 							zIndex: 100,
 							stroke: new ol.style.Stroke({
 								color: 'rgba(246, 99, 79, 1.0)',
@@ -786,7 +786,7 @@ var config = {
 							})
 						})
 					},
-					'parking:condition': {
+					'amenity': {
 						'disabled': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(255, 255, 0, 1.0)',
@@ -797,7 +797,7 @@ var config = {
 								placement: 'line'
 							})
 						}),
-						'free': new ol.style.Style({
+						'parking_spaces': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(255, 0, 255, 1.0)',
 								width: 2
