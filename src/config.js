@@ -876,7 +876,7 @@ var config = {
 							})
 						})
 					},
-					'building': {
+					'parking:condition': {
 						'.*': new ol.style.Style({
 							zIndex: 100,
 							stroke: new ol.style.Stroke({
