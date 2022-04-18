@@ -849,7 +849,7 @@ var config = {
 	{
 			group: 'Test',
 			title: 'building4 ',
-			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
+			query: '(node["amenity"="parking_space"]({{bbox}});rel(bn)->.foo;way(bn)["amenity"="parking_space"];node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
 				var styles = {
