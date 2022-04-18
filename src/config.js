@@ -806,8 +806,7 @@ var config = {
 								color: 'rgba(128,128,128,0.4)'
 							}),	
 							text: new ol.style.Text({
-								text: name,
-								placement: 'line'
+								text: name
 							})
 						}),
 						'.*': new ol.style.Style({
