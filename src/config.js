@@ -756,12 +756,12 @@ var config = {
 	{
 			group: 'Test',
 			title: 'building2',
-			query: '(node[amenity=parking_space]({{bbox}});node(w););out;',
+			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
 				var styles = {
 					'amenity': {
-						'parking_space': new ol.style.Style({
+						'parking': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(170, 170, 170, 1.0)',
 								width: 1
@@ -771,8 +771,8 @@ var config = {
 							})
 						})
 					},
-					'amenity': {
-						'cafe': new ol.style.Style({
+					'building': {
+						'.*': new ol.style.Style({
 							zIndex: 100,
 							stroke: new ol.style.Stroke({
 								color: 'rgba(246, 99, 79, 1.0)',
@@ -786,10 +786,10 @@ var config = {
 							})
 						})
 					},
-					'amenity': {
-						'disabled': new ol.style.Style({
+					'highway': {
+						'service': new ol.style.Style({
 							stroke: new ol.style.Stroke({
-								color: 'rgba(255, 255, 0, 1.0)',
+								color: 'rgba(255, 255, 255, 1.0)',
 								width: 2
 							}),
 							text: new ol.style.Text({
@@ -797,21 +797,9 @@ var config = {
 								placement: 'line'
 							})
 						}),
-						'recycling': new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'rgba(255, 0, 255, 1.0)',
-								width: 2
-							}),
-							fill: new ol.style.Fill({
-								color: 'rgba(128,128,128,0.4)'
-							}),	
-							text: new ol.style.Text({
-								text: name
-							})
-						}),
 						'.*': new ol.style.Style({
 							stroke: new ol.style.Stroke({
-								color: 'rgba(0, 255, 255, 1.0)',
+								color: 'rgba(255, 255, 255, 1.0)',
 								width: 3
 							}),
 							text: new ol.style.Text({
@@ -860,7 +848,7 @@ var config = {
 
 	{
 			group: 'Test',
-			title: 'building',
+			title: 'building3',
 			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
@@ -894,7 +882,7 @@ var config = {
 					'parking:condition': {
 						'disabled': new ol.style.Style({
 							stroke: new ol.style.Stroke({
-								color: 'rgba(255, 54, 255, 1.0)',
+								color: 'rgba(0,128,0, 1.0)',
 								width: 2
 							}),
 							text: new ol.style.Text({
@@ -902,9 +890,9 @@ var config = {
 								placement: 'line'
 							})
 						}),
-						'free': new ol.style.Style({
+						'ticket': new ol.style.Style({
 							stroke: new ol.style.Stroke({
-								color: 'rgba(255, 255, 255, 1.0)',
+								color: 'rgba(0,0,255, 1.0)',
 								width: 3
 							}),
 							text: new ol.style.Text({
