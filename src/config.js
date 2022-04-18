@@ -955,8 +955,8 @@ var config = {
 },
 		{
 			group: 'Test',
-			title: '3consultes2',
-			query: '(node["parking:condition"="free"]({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
+			title: '3consultes',
+			query: '(node["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);way["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);relation["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/ES_R308e.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function (feature) {
