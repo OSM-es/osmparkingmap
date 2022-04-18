@@ -903,11 +903,12 @@ var config = {
 						})
 					},
 					'parking_space': {
-						'normal': image: new ol.style.Icon({
+						'normal': new ol.style.Style({
+							image: new ol.style.Icon({
 						scale: 0.04,
 						src: imgSrc + 'icones/ES_R308e.png'
 							})
-						}) })
+						}) 
 					},
 					'natural': {
 						'tree': new ol.style.Style({
