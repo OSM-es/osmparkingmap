@@ -938,10 +938,10 @@ var config = {
 
 },
 		{
-			group: 'Accessibilitat',
-			title: 'Biblioteca No Adaptada',
-			query: '(node["amenity"="library"]["wheelchair"="no"]({{bbox}});node(w);way["amenity"="library"]["wheelchair"="no"]({{bbox}});node(w);relation["amenity"="library"]["wheelchair"="no"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'accessibilitat/wheelchair_no.svg',
+			group: 'Test',
+			title: '3consultes',
+			query: '(node["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);way["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w);relation["amenity"="parking_space"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones/ES_R308e.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function (feature) {
 				var key_regex = /^name$/
@@ -956,10 +956,9 @@ var config = {
 					width: 1.25
 				});
 				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
+					image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'icones/ES_R308e.png'
 					}),
 							text: new ol.style.Text({
 								text: name,
