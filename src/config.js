@@ -848,8 +848,8 @@ var config = {
 
 	{
 			group: 'Test',
-			title: 'building4',
-			query: '(node["amenity"]({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
+			title: 'building3',
+			query: '(node({{bbox}});rel(bn)->.foo;way(bn);node(w)->.foo;rel(bw););out;',
 			style: function (feature) {
 				var name = feature.get('name') || '';
 				var styles = {
@@ -881,28 +881,18 @@ var config = {
 					},
 					'parking:condition': {
 						'free': new ol.style.Style({
-							image: new ol.style.Icon({
-						scale: 0.04,
-						src: imgSrc + 'icones/ES_R308e.png'
-							})
-						}),
-						'ticket': new ol.style.Style({
-							image: new ol.style.Icon({
-						scale: 0.04,
-						src: imgSrc + 'icones/ES_R308e.png'
-							}),
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,128,0, 1.0)',
 								width: 2
 							}),
 							fill: new ol.style.Fill({
-								color: 'rgba(246, 99, 79, 0.3)'
+								color: 'rgba(0,128,0, 0.3)'
 							}),
 							text: new ol.style.Text({
 								text: name
 							})
 						}),
-						'.*': new ol.style.Style({
+						'ticket': new ol.style.Style({
 							stroke: new ol.style.Stroke({
 								color: 'rgba(0,0,255, 1.0)',
 								width: 3
@@ -912,14 +902,10 @@ var config = {
 							})
 						})
 					},
-					'landuse': {
-						'forest|grass|allotments': new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'rgba(140, 208, 95, 1.0)',
-								width: 1
-							}),
-							fill: new ol.style.Fill({
-								color: 'rgba(140, 208, 95, 0.3)'
+					'parking_space': {
+						'normal': image: new ol.style.Icon({
+						scale: 0.04,
+						src: imgSrc + 'icones/ES_R308e.png'
 							})
 						})
 					},
