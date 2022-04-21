@@ -580,8 +580,8 @@ var config = {
 		// Motorcycle parking
 		{
 			group: 'Parking spaces',
-			title: 'Motorcycle parking',
-			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="motorcycle"]({{bbox}});node(w););out meta;',
+			title: '<p style="background-color:#FFFF00;">More Options!</p>Motorcycle parking',
+			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
 			iconStyle: 'background-color:#9D06FB',
 			style: function () {
@@ -593,9 +593,10 @@ var config = {
 					width: 1.25
 				});
 				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						scale: 0.05,
-						src: imgSrc + 'icones_parking/pmotorbike.svg'
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
 					}),
 					fill: fill,
 					stroke: stroke
