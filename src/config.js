@@ -687,7 +687,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
@@ -715,7 +716,66 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
+
+		// Parking spaces
+		{
+			group: 'Parking spaces',
+			title: '<span style="background-color:rgba(160,82,45,0.4);">Bus</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="bus"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pbus.svg',
+			iconStyle: 'background-color:#9D06FB',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(160,82,45,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '(160,82,45,1)',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		
+		},
+
+		// Parking spaces
+		{
+			group: 'Parking spaces',
+			title: '<span style="background-color:rgba(255,255,49,0.4);">Taxi</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="taxi"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/ptaxi.svg',
+			iconStyle: 'background-color:(255,255,49,0.4)',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(255,255,49,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '(255,255,49,1)',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		
+		},
 
 		// Parking spaces
 		{
@@ -743,7 +803,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
@@ -771,7 +832,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
@@ -799,7 +861,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
@@ -827,7 +890,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
@@ -855,63 +919,8 @@ var config = {
 				});
 				return style;
 			}
-		},		},
-
-		// Parking spaces
-		{
-			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
-					width: 1.25
-				});
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},		},
-
-		// Parking spaces
-		{
-			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
-					width: 1.25
-				});
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},		},
+		
+		},
 
 		// Parking spaces
 		{
