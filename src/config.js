@@ -582,7 +582,7 @@ var config = {
 			group: 'Parking spaces',
 			title: 'Motorcycle parking',
 			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'base/circle.svg',
+			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
 			iconStyle: 'background-color:#9D06FB',
 			style: function () {
 				var fill = new ol.style.Fill({
