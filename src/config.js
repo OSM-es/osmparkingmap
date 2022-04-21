@@ -577,11 +577,39 @@ var config = {
 			}
 		},
 
-		// Motorcycle parking
+		// Parking spaces
+		{
+			group: 'Parking spaces',
+			title: '<span style="background-color:rgba(157,6,251,0.4);">Motorcycle parking</span>',
+			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="motorcycle"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
+			iconStyle: 'background-color:#9D06FB',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(157,6,251,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#9D06FB',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Parking spaces
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:#9D06FB;">Motorcycle parking</span>',
-			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="motorcycle"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
 			iconStyle: 'background-color:#9D06FB',
 			style: function () {
