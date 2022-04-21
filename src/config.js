@@ -594,7 +594,7 @@ var config = {
 				});
 				var style = new ol.style.Style({
 					image: new ol.style.Icon({
-						scale: 0.1,
+						scale: 0.05,
 						src: imgSrc + 'icones_parking/pmotorbike.svg'
 					}),
 					fill: fill,
