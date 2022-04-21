@@ -593,10 +593,9 @@ var config = {
 					width: 1.25
 				});
 				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
+					image: new ol.style.Icon({
+						scale: 1,
+						src: imgSrc + 'icones_parking/pmotorbike.svg'
 					}),
 					fill: fill,
 					stroke: stroke
