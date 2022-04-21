@@ -581,7 +581,7 @@ var config = {
 		{
 			group: 'Parking spaces',
 			title: 'Motorcycle parking',
-			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="motorcycle"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
 			iconStyle: 'background-color:#9D06FB',
 			style: function () {
