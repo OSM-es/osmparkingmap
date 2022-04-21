@@ -579,7 +579,7 @@ var config = {
 
 		// Motorcycle parking
 		{
-			group: 'Parking_Lanes',
+			group: 'Parking spaces',
 			title: 'Motorcycle parking',
 			query: '(node["amenity"="motorcycle_parking"]({{bbox}});node(w);way["amenity"="motorcycle_parking"]({{bbox}});node(w);relation["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/circle.svg',
