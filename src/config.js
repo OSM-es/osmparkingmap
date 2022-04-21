@@ -580,7 +580,7 @@ var config = {
 		// Motorcycle parking
 		{
 			group: 'Parking spaces',
-			title: '<p style="background-color:#FFFF00;">More Options!</p>Motorcycle parking',
+			title: '<span style="background-color:#9D06FB;">Motorcycle parking</span>',
 			query: '(nwr["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
 			iconStyle: 'background-color:#9D06FB',
