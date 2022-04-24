@@ -927,7 +927,7 @@ var config = {
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(0,128,0,0.4);">Charging</span>',
 			query: '(nwr["amenity"="parking_space"]["parking_space"="charging"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pcharging.svg',
+			iconSrc: imgSrc + 'icones_parking/pcharging_station.svg',
 			iconStyle: 'background-color:rgba(0,128,0,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -955,7 +955,7 @@ var config = {
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(128,0,128,0.4);">Parent</span>',
 			query: '(nwr["amenity"="parking_space"]["parking_space"="parent"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pparent.svg',
+			iconSrc: imgSrc + 'icones_parking/pparents.svg',
 			iconStyle: 'background-color:rgba(128,0,128,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
