@@ -809,16 +809,16 @@ var config = {
 		// Parking spaces
 		{
 			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(128,128,128,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
+			title: '<span style="background-color:rgba(128,128,128,0.4);">Bicycles</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="bicycle"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pbicycle.svg',
+			iconStyle: 'background-color:rgba(128,128,128,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
+					color: 'rgba(128,128,128,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
+					color: 'rgba(128,128,128,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -838,16 +838,16 @@ var config = {
 		// Parking spaces
 		{
 			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
+			title: '<span style="background-color:rgba(0,0,0,0.4);">Scooter (Patinet)</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="scooter"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pscooter.svg',
+			iconStyle: 'background-color:(0,0,0,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
+					color: 'rgba(0,0,0,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
+					color: '(0,0,0,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -867,16 +867,16 @@ var config = {
 		// Parking spaces
 		{
 			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
+			title: '<span style="background-color:rgba(0,191,255,0.4);">Disabled</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="disabled"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pdisabled.svg',
+			iconStyle: 'background-color:rgba(0,191,255,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
+					color: 'rgba(0,191,255,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
+					color: 'rgba(0,191,255,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -896,16 +896,16 @@ var config = {
 		// Parking spaces
 		{
 			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
+			title: '<span style="background-color:rgba(250,218,94,0.4);">Delivery</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="delivery"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pdelivery.svg',
+			iconStyle: 'background-color:rgba(250,218,94,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
+					color: 'rgba(250,218,94,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
+					color: '(250,218,94,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -925,16 +925,44 @@ var config = {
 		// Parking spaces
 		{
 			group: 'Parking spaces',
-			title: '<span style="background-color:rgba(157,6,251,0.4);">Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="normal"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pmotorbike.svg',
-			iconStyle: 'background-color:#9D06FB',
+			title: '<span style="background-color:rgba(0,128,0,0.4);">Charging</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="charging"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pcharging.svg',
+			iconStyle: 'background-color:rgba(0,128,0,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(157,6,251,0.4)'
+					color: 'rgba(0,128,0,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#9D06FB',
+					color: 'rgba(0,128,0,1)',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Parking spaces
+		{
+			group: 'Parking spaces',
+			title: '<span style="background-color:rgba(128,0,128,0.4);">Parent</span>',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="parent"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pparent.svg',
+			iconStyle: 'background-color:rgba(128,0,128,0.4)',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(128,0,128,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: 'rgba(128,0,128,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
