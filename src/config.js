@@ -1215,7 +1215,7 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: 'rgba(64,224,208,1)',
-					width: 5 ,
+					width: 2 ,
 					lineDash: [10, 10]
 				});
 				var style = new ol.style.Style({
@@ -1239,7 +1239,7 @@ var config = {
 				});
 				var stroke = new ol.style.Stroke({
 					color: 'rgba(64,224,208,1)',
-					width: 5 ,
+					width: 2 ,
 					lineDash: [10, 10]
 				});
 				var style = new ol.style.Style({
