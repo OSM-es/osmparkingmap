@@ -1216,7 +1216,7 @@ var config = {
 				var stroke = new ol.style.Stroke({
 					color: 'rgba(64,224,208,1)',
 					width: 2 ,
-					lineDash: [10, 10]
+					lineDash: [.1, 5]
 				});
 				var style = new ol.style.Style({
 					fill: fill,
