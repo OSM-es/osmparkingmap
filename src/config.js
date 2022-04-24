@@ -1207,7 +1207,7 @@ var config = {
 			group: 'Lane/Street side',
 			title: 'Parking Lane',
 			query: '(way["parking"="lane"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'icones_parking/pparkinglane.svg',
 			iconStyle: 'background-color:rgba(64,224,208,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -1231,7 +1231,7 @@ var config = {
 			group: 'Lane/Street side',
 			title: 'Street side',
 			query: '(way["parking"="street_side"]({{bbox}});node(w););out skel;',
-			iconSrc: imgSrc + 'base/lineline.png',
+			iconSrc: imgSrc + 'icones_parking/pstreetside.svg',
 			iconStyle: 'background-color:rgba(192,192,192,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
