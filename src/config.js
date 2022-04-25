@@ -1204,7 +1204,7 @@ var config = {
 
 		// Lane or street side
 		{
-			group: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
+			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
 			query: '(way["parking"="lane"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparkinglane.svg',
@@ -1543,6 +1543,51 @@ var config = {
 					stroke: stroke
 				});
 				return style;
+			}
+},
+		{
+			group: 'Lane/Street side',
+			title: '<span style="background-color:rgba(0,191,255,0.4);">Capacity</span>',
+			query: '(nwr["parking"="lane|street_side"]["capacity"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
+			iconStyle: 'background-color:rgba(0,191,255,0.4)',
+			style: function (feature) {
+				var capacity = feature.get('capacity') || '';
+				if (capacity === ''){
+					return undefined;
+				}
+				var styles = [];
+
+				/* draw the segment line */ 
+				var width = (parseFloat(capacity) / 30) + 0.5;
+				var color = linearColorInterpolation([0, 255, 0], [255, 0, 0], Math.min(capacity, 120) / 120);
+
+				var stroke = new ol.style.Stroke({
+					color: 'rgb(' + color.join() + ')',
+					width: width
+				});
+				styles.push(new ol.style.Style({
+					stroke: stroke
+				}));
+
+				// doesn't show speed sign in roundabout and similars
+				if (!feature.get('junction')) {
+					/* show the speed sign */
+					var coords = feature.getGeometry().getCoordinates();
+
+					styles.push(new ol.style.Style({
+						geometry: new ol.geom.Point(new ol.geom.LineString(coords).getCoordinateAt(0.5)), // show the image in the middle of the segment
+						image: new ol.style.Icon({
+							src: imgSrc + 'icones_parking/parkingspace.svg',
+							scale:0.04
+						}),
+						text: new ol.style.Text({
+							text: capacity
+						})
+					}));
+				}
+
+				return styles;
 			}
 		},
 
