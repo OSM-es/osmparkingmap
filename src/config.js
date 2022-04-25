@@ -1204,8 +1204,8 @@ var config = {
 
 		// Lane or street side
 		{
-			group: 'Lane/Street side',
-			title: 'Parking Lane',
+			group: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
+			title: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
 			query: '(way["parking"="lane"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparkinglane.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
@@ -1229,7 +1229,7 @@ var config = {
 		// Lane or street side
 		{
 			group: 'Lane/Street side',
-			title: 'Street side',
+			title: '<span style="background-color:rgba(65,105,225,0.4);">Street side</span>',
 			query: '(way["parking"="street_side"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pstreetside.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
@@ -1253,7 +1253,7 @@ var config = {
 		// Lane or street side
 		{
 			group: 'Lane/Street side',
-			title: 'Orientation parallel',
+			title: '<span style="background-color:rgba(210,105,30,0.4);">Orientation parallel</span>',
 			query: '(way["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparallel.svg',
 			iconStyle: 'background-color:rgba(210,105,30,0.4)',
@@ -1277,7 +1277,7 @@ var config = {
 		// Lane or street side
 		{
 			group: 'Lane/Street side',
-			title: 'Orientation perpendicular',
+			title: '<span style="background-color:rgba(60,179,113,0.4);">Orientation perpendicular</span>',
 			query: '(way["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pperpendicular.svg',
 			iconStyle: 'background-color:rgba(60,179,113,0.4)',
@@ -1301,7 +1301,7 @@ var config = {
 		// Lane or street side
 		{
 			group: 'Lane/Street side',
-			title: 'Orientation diagonal',
+			title: '<span style="background-color:rgba(34,139,34,0.4);">Orientation diagonal</span>',
 			query: '(way["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pdiagonal.svg',
 			iconStyle: 'background-color:rgba(34,139,34,0.4)',
