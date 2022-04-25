@@ -1593,7 +1593,7 @@ var config = {
 		{
 			group: 'Mobilitat',
 			title: 'Vies amb "maxspeed"',
-			query: '(nwr["parking"="lane|street_side"]["capacity"]({{bbox}});node(w););out meta;',
+			query: '(nwr["capacity"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/maxspeed.svg',
 			style: function (feature) {
 				var maxspeed = feature.get('capacity') || '';
