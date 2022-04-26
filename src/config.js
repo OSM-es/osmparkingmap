@@ -1596,15 +1596,15 @@ var config = {
 			query: '(nwr["capacity"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/maxspeed.svg',
 			style: function (feature) {
-				var maxspeed = feature.get('capacity') || '';
-				if (maxspeed === ''){
+				var capacity = feature.get('capacity') || '';
+				if (capacity === ''){
 					return undefined;
 				}
 				var styles = [];
 
 				/* draw the segment line */ 
-				var width = (parseFloat(maxspeed) / 30) + 0.5;
-				var color = linearColorInterpolation([0, 255, 0], [255, 0, 0], Math.min(maxspeed, 120) / 120);
+				var width = (parseFloat(capacity) / 30) + 0.5;
+				var color = linearColorInterpolation([0, 255, 0], [255, 0, 0], Math.min(capacity, 120) / 120);
 
 				var stroke = new ol.style.Stroke({
 					color: 'rgb(' + color.join() + ')',
@@ -1626,7 +1626,7 @@ var config = {
 							scale:0.04
 						}),
 						text: new ol.style.Text({
-							text: maxspeed
+							text: capacity
 						})
 					}));
 				}
