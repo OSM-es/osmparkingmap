@@ -591,7 +591,7 @@ var config = {
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(255,0,0,0.4);">Falta Parking space</span>',
-			query: '(nwr["amenity"="parking_space"]["!parking_space"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="parking_space"][!parking_space]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
 			iconStyle: 'background-color:rgba(255,0,0,0.4)',
 			style: function () {
@@ -1654,10 +1654,10 @@ var config = {
 			iconStyle: 'background-color:#154360',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(21,67,96,0.4)'
+					color: 'rgba(255,0,0,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#154360',
+					color: 'rgba(255,0,0,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -1682,10 +1682,10 @@ var config = {
 			iconStyle: 'background-color:#154360',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(21,67,96,0.4)'
+					color: 'rgba(0,128,0,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
-					color: '#154360',
+					color: 'rgba(0,128,0,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -1705,7 +1705,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(0,0,0,0.4);">Falta Fee</span>',
-			query: '(nwr["amenity"="parking"]["!fee"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="parking"][!fee]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pfeequestion.svg',
 			iconStyle: 'background-color:rgba(0,0,0,0.4)',
 			style: function () {
