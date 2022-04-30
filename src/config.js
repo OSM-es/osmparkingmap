@@ -1647,10 +1647,10 @@ var config = {
 
 		// Parking with fee
 		{
-			group: 'Parking_Lanes',
-			title: 'Parking with fee',
+			group: 'Parkings',
+			title: '<span style="background-color:rgba(255,0,0,0.4);">With fee</span>',
 			query: '(node["amenity"="parking"][fee=yes]({{bbox}});node(w);way["amenity"="parking"][fee=yes]({{bbox}});node(w);relation["amenity"="parking"][fee=yes]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'base/circle.svg',
+			iconSrc: imgSrc + 'icones_parking/pticket.svg',
 			iconStyle: 'background-color:#154360',
 			style: function () {
 				var fill = new ol.style.Fill({
@@ -1673,7 +1673,63 @@ var config = {
 			}
 		},
 
-		// Motorcycle parking
+		// Parking with fee
+		{
+			group: 'Parkings',
+			title: '<span style="background-color:rgba(0,128,0,0.4);">Without fee</span>',
+			query: '(node["amenity"="parking"][fee=no]({{bbox}});node(w);way["amenity"="parking"][fee=no]({{bbox}});node(w);relation["amenity"="parking"][fee=no]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pfeeno.svg',
+			iconStyle: 'background-color:#154360',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(21,67,96,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#154360',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Parking spaces
+		{
+			group: 'Parkings',
+			title: '<span style="background-color:rgba(0,0,0,0.4);">Falta Fee</span>',
+			query: '(nwr["amenity"="parking"]["!fee"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'icones_parking/pfeequestion.svg',
+			iconStyle: 'background-color:rgba(0,0,0,0.4)',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,0,0,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: 'rgba(0,0,0,1)',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
+		// Delivery
 		{
 			group: 'Parking_Lanes',
 			title: 'Delivery',
