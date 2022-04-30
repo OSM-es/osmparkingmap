@@ -123,7 +123,7 @@ var config = {
 			iconSrc: imgSrc + 'logo_mapbox.png',
 			source: new ol.source.XYZ({
 				attributions: 'Map data &copy; <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap Contributors</a>,&copy; <a href="https://www.mapbox.com/" target="_blank">Mapbox</a>',
-				url: 'https://api.mapbox.com/styles/v1/yopaseopor/cl2i2y160000v15lb6f9io7vu/tiles/512/{z}/{x}/{y}'
+				url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=cl2i2y160000v15lb6f9io7vu'
 			}),
 			visible: false
 		}),
