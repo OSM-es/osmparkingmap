@@ -592,7 +592,7 @@ var config = {
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(255,0,0,0.4);">Falta Parking space</span>',
 			query: '(nwr["amenity"="parking_space"][!"parking_space"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
+			iconSrc: imgSrc + 'icones_parking/faltaparkingspace.svg',
 			iconStyle: 'background-color:rgba(255,0,0,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
