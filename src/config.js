@@ -1216,7 +1216,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
-			query: '(way["parking"="lane|street_side"]["parking"="lane"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity"="parking"]["parking"="lane"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparkinglane.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
 			style: function () {
@@ -1240,7 +1240,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(65,105,225,0.4);">Street side</span>',
-			query: '(way["parking"="lane|street_side"]["parking"="street_side"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity"="parking"]["parking"="street_side"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pstreetside.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
 			style: function () {
@@ -1264,7 +1264,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(210,105,30,0.4);">Orientation parallel</span>',
-			query: '(way["parking"="lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparallel.svg',
 			iconStyle: 'background-color:rgba(210,105,30,0.4)',
 			style: function () {
@@ -1288,7 +1288,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(60,179,113,0.4);">Orientation perpendicular</span>',
-			query: '(way["parking"="lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pperpendicular.svg',
 			iconStyle: 'background-color:rgba(60,179,113,0.4)',
 			style: function () {
@@ -1312,7 +1312,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(34,139,34,0.4);">Orientation diagonal</span>',
-			query: '(way["parking"="lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pdiagonal.svg',
 			iconStyle: 'background-color:rgba(34,139,34,0.4)',
 			style: function () {
@@ -1336,7 +1336,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(210,180,140,0.4);">Disc</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="disc"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="disc"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdisc.svg',
 			iconStyle: 'background-color:rgba(210,180,140,0.4)',
 			style: function () {
@@ -1364,7 +1364,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(72,209,204,0.4);">Residents</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="residents"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="residents"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/presidents.svg',
 			iconStyle: 'background-color:rgba(72,209,204,0.4)',
 			style: function () {
@@ -1392,7 +1392,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(128,128,0,0.4);">Employee</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="employee"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="employee"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pemployee.svg',
 			iconStyle: 'background-color:rgba(128,128,0,0.4)',
 			style: function () {
@@ -1420,7 +1420,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(0,0,255,0.4);">Ticket</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="ticket"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="ticket"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pticket.svg',
 			iconStyle: 'background-color:rgba(0,0,255,0.4)',
 			style: function () {
@@ -1448,7 +1448,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(255,255,255,0.4);">Free</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
 			iconStyle: 'background-color:rgba(255,255,255,0.4)',
 			style: function () {
@@ -1476,7 +1476,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(219,112,147,0.4);">Customers</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcustomers.svg',
 			iconStyle: 'background-color:rgba(219,112,147,0.4)',
 			style: function () {
@@ -1504,7 +1504,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(220,20,60,0.4);">Private</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="private"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="private"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pprivate.svg',
 			iconStyle: 'background-color:rgba(220,20,60,0.4)',
 			style: function () {
@@ -1532,7 +1532,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(0,191,255,0.4);">Disabled (condition)</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="disabled"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdisabled.svg',
 			iconStyle: 'background-color:rgba(0,191,255,0.4)',
 			style: function () {
@@ -1558,7 +1558,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(0,191,255,0.4);">Capacity</span>',
-			query: '(nwr["parking"="lane|street_side"]["capacity"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["capacity"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
 			iconStyle: 'background-color:rgba(0,191,255,0.4)',
 			style: function (feature) {
@@ -1761,7 +1761,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(210,105,30,0.4);">Orientation parallel</span>',
-			query: '(way["parking"!="lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pparallel.svg',
 			iconStyle: 'background-color:rgba(210,105,30,0.4)',
 			style: function () {
@@ -1785,7 +1785,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(60,179,113,0.4);">Orientation perpendicular</span>',
-			query: '(way["parking"!="lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pperpendicular.svg',
 			iconStyle: 'background-color:rgba(60,179,113,0.4)',
 			style: function () {
@@ -1809,7 +1809,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(34,139,34,0.4);">Orientation diagonal</span>',
-			query: '(way["parking"!="lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
 			iconSrc: imgSrc + 'icones_parking/pdiagonal.svg',
 			iconStyle: 'background-color:rgba(34,139,34,0.4)',
 			style: function () {
@@ -1833,7 +1833,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(210,180,140,0.4);">Disc</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="disc"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="disc"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdisc.svg',
 			iconStyle: 'background-color:rgba(210,180,140,0.4)',
 			style: function () {
@@ -1861,7 +1861,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(72,209,204,0.4);">Residents</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="residents"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="residents"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/presidents.svg',
 			iconStyle: 'background-color:rgba(72,209,204,0.4)',
 			style: function () {
@@ -1889,7 +1889,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(128,128,0,0.4);">Employee</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="employee"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="employee"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pemployee.svg',
 			iconStyle: 'background-color:rgba(128,128,0,0.4)',
 			style: function () {
@@ -1917,7 +1917,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(0,0,255,0.4);">Ticket</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="ticket"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="ticket"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pticket.svg',
 			iconStyle: 'background-color:rgba(0,0,255,0.4)',
 			style: function () {
@@ -1945,7 +1945,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(255,255,255,0.4);">Free</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/parkingspace.svg',
 			iconStyle: 'background-color:rgba(255,255,255,0.4)',
 			style: function () {
@@ -1973,7 +1973,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(219,112,147,0.4);">Customers</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcustomers.svg',
 			iconStyle: 'background-color:rgba(219,112,147,0.4)',
 			style: function () {
@@ -2001,7 +2001,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(220,20,60,0.4);">Private</span>',
-			query: '(nwr["parking"!="lane|street_side"]["parking:condition"="private"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="private"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pprivate.svg',
 			iconStyle: 'background-color:rgba(220,20,60,0.4)',
 			style: function () {
@@ -2029,7 +2029,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(0,191,255,0.4);">Disabled (condition)</span>',
-			query: '(nwr["parking"="lane|street_side"]["parking:condition"="disabled"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"~"lane|street_side"]["parking:condition"="disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdisabled.svg',
 			iconStyle: 'background-color:rgba(0,191,255,0.4)',
 			style: function () {
