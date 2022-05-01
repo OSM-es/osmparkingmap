@@ -2058,11 +2058,11 @@ var config = {
 				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
 				var name = feature.get(name_key) || '';
 				var fill = new ol.style.Fill({
-					color: 'rgba(255,215,0,0.4)'
+					color: 'rgba(0,0,0,0.4)'
 				});
 
 				var stroke = new ol.style.Stroke({
-					color: 'rgba(255,215,0,1)',
+					color: 'rgba(0,0,0,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
@@ -2073,12 +2073,11 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
-								color: 'rgba(255,255,255,0.4)',
-								font: '14px Verdana',
+								font: '14px Verdana bold',
 								offsetX : 0,
 								offsetY : 0,
 								fill: new ol.style.Fill({
-                            color: '#ffffff'
+                            color: 'rgba(255,255,255,1)'
                         }),
 							}),
 					fill:  fill,
