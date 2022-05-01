@@ -878,7 +878,7 @@ var config = {
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(0,191,255,0.4);">Disabled</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="disabled"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="disabled"]({{bbox}});node(w);node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdisabled.svg',
 			iconStyle: 'background-color:rgba(0,191,255,0.4)',
 			style: function () {
@@ -2056,7 +2056,7 @@ var config = {
 
 		// Entrance garage
 		{
-			group: 'Parking_Lanes',
+			group: 'Parking spaces',
 			title: 'Entrance garage',
 			query: '(node["entrance"="garage"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones/ES_R308e.png',
@@ -2070,38 +2070,6 @@ var config = {
 				return style;
 			}
 		},
-		
-		// capacity:disabled
-		{
-			group: 'Parking_Lanes',
-			title: 'Disabled parking space',
-			query: '(node["capacity:disabled"]({{bbox}});node(w);way["capacity:disabled"]({{bbox}});node(w);relation["capacity:disabled"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'base/circle.svg',
-			iconStyle: 'background-color:#00FF00',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(0,255,0,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#00FF00',
-					width: 1.25
-				});
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			
-			}
-
-		},
-
-
 
 		// Left Free
 		{
