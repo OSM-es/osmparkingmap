@@ -2072,13 +2072,14 @@ var config = {
 						radius: 5
 					}),
 							text: new ol.style.Text({
-								text: name,
-								color: 'rgba(255,255,255,0.4)',
+								 text: text1,
 								font: '14px Verdana',
 								offsetX : 0,
-								offsetY : 30
+								offsetY : 0
 							}),
-					fill: fill,
+        fill: new ol.style.Fill({
+          color: 'red'
+        }),
 					stroke: stroke
 				});
 				return style;
