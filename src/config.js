@@ -2076,11 +2076,12 @@ var config = {
 								color: 'rgba(255,255,255,0.4)',
 								font: '14px Verdana',
 								offsetX : 0,
-								offsetY : 0
-							}),
-					fill: new ol.style.Fill({
+								offsetY : 0,
+								fill: new ol.style.Fill({
                             color: '#ffffff'
                         }),
+							}),
+					fill:  fill,
 					stroke: stroke
 				});
 				return style;
