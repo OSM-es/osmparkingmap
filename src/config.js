@@ -2149,7 +2149,7 @@ var config = {
 
 		// Left Free
 		{
-			group: 'Parking_Lanes',
+			group: 'Test',
 			title: 'Left Free',
 			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
