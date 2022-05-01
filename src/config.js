@@ -2073,7 +2073,7 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
-								font: '14px Verdana bold',
+								font: 'small-caps bold 24px/1 sans-serif',
 								offsetX : 0,
 								offsetY : 0,
 								fill: new ol.style.Fill({
