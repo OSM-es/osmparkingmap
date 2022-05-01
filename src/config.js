@@ -202,7 +202,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Right Ticket',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="ticket"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="ticket"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#0000FF',
 			style: function () {
@@ -226,7 +226,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Left Ticket',
-			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="ticket"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="ticket"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#0000FF',
 			style: function () {
@@ -250,7 +250,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Both Ticket',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="ticket"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="ticket"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#0000FF',
 			style: function () {
@@ -273,7 +273,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Right No parking',
-			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w);way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="no_parking"]({{bbox}});node(w);way["parking:lane:right"="no_stopping"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#ff0000',
 			style: function () {
@@ -297,7 +297,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Left No parking',
-			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:left"="no_parking"]({{bbox}});node(w);way["parking:lane:left"="no_stopping"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#ff0000',
 			style: function () {
@@ -321,7 +321,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Both No parking',
-			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="no_parking"]({{bbox}});node(w);way["parking:lane:both"="no_stopping"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#ff0000',
 			style: function () {
@@ -345,7 +345,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Right Free',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
@@ -371,7 +371,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Right Residents Green Zone',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right:residents"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right:residents"="free"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right:residents"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
@@ -395,7 +395,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Right Residents Green Exclusive Zone',
-			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="residents"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:right"="parallel"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="diagonal"]["parking:condition:right"="residents"]({{bbox}});node(w);way["parking:lane:right"="perpendicular"]["parking:condition:right"="residents"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#145a32',
 			style: function () {
@@ -421,7 +421,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Left Free',
-			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
@@ -447,7 +447,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Left Residents Green Zone',
-			query: '(way["parking:lane:left"="parallel"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left:residents"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left:residents"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left:residents"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
@@ -471,7 +471,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Left Residents Green Exclusive Zone',
-			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="residents"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="residents"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="residents"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/dots.png',
 			iconStyle: 'background-color:#145a32',
 			style: function () {
@@ -497,7 +497,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Both Free',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#c9c9c9',
 			style: function () {
@@ -522,7 +522,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Both Residents Green Zone',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both:residents"="free"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both:residents"="free"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both:residents"="free"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#00FF00',
 			style: function () {
@@ -545,7 +545,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Both Residents Green Exclusive Zone',
-			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="residents"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:lane:both"="parallel"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="diagonal"]["parking:condition:both"="residents"]({{bbox}});node(w);way["parking:lane:both"="perpendicular"]["parking:condition:both"="residents"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#145a32',
 			style: function () {
@@ -568,7 +568,7 @@ var config = {
 		{
 			group: 'Parking_Lanes',
 			title: 'Customers',
-			query: '(way["parking:condition:left"="customers"]({{bbox}});node(w);way["parking:condition:right"="customers"]({{bbox}});node(w);way["parking:condition:both"="customers"]({{bbox}});node(w););out skel;',
+			query: '(way["parking:condition:left"="customers"]({{bbox}});node(w);way["parking:condition:right"="customers"]({{bbox}});node(w);way["parking:condition:both"="customers"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/line.png',
 			iconStyle: 'background-color:#01F6F2',
 			style: function () {
@@ -1216,7 +1216,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(65,105,225,0.4);">Parking lane</span>',
-			query: '(way["amenity"="parking"]["parking"="lane"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity"="parking"]["parking"="lane"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pparkinglane.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
 			style: function () {
@@ -1240,7 +1240,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(65,105,225,0.4);">Street side</span>',
-			query: '(way["amenity"="parking"]["parking"="street_side"]({{bbox}});node(w););out skel;',
+			query: '(way["amenity"="parking"]["parking"="street_side"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pstreetside.svg',
 			iconStyle: 'background-color:rgba(65,105,225,0.4)',
 			style: function () {
@@ -1264,7 +1264,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(210,105,30,0.4);">Orientation parallel</span>',
-			query: '(way["parking"~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pparallel.svg',
 			iconStyle: 'background-color:rgba(210,105,30,0.4)',
 			style: function () {
@@ -1288,7 +1288,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(60,179,113,0.4);">Orientation perpendicular</span>',
-			query: '(way["parking"~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pperpendicular.svg',
 			iconStyle: 'background-color:rgba(60,179,113,0.4)',
 			style: function () {
@@ -1312,7 +1312,7 @@ var config = {
 		{
 			group: 'Lane/Street side',
 			title: '<span style="background-color:rgba(34,139,34,0.4);">Orientation diagonal</span>',
-			query: '(way["parking"~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdiagonal.svg',
 			iconStyle: 'background-color:rgba(34,139,34,0.4)',
 			style: function () {
@@ -1761,7 +1761,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(210,105,30,0.4);">Orientation parallel</span>',
-			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="parallel"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pparallel.svg',
 			iconStyle: 'background-color:rgba(210,105,30,0.4)',
 			style: function () {
@@ -1785,7 +1785,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(60,179,113,0.4);">Orientation perpendicular</span>',
-			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="perpendicular"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pperpendicular.svg',
 			iconStyle: 'background-color:rgba(60,179,113,0.4)',
 			style: function () {
@@ -1809,7 +1809,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(34,139,34,0.4);">Orientation diagonal</span>',
-			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out skel;',
+			query: '(way["parking"!~"lane|street_side"]["parking:orientation"="diagonal"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdiagonal.svg',
 			iconStyle: 'background-color:rgba(34,139,34,0.4)',
 			style: function () {
@@ -2176,7 +2176,7 @@ var config = {
 		{
 			group: 'Test',
 			title: 'Right Ticket',
-			query: '(way["highway"="residential"]["maxspeed"="30"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="40"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="50"]({{bbox}});node(w););out skel;',
+			query: '(way["highway"="residential"]["maxspeed"="30"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="40"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="50"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'base/lineline.png',
 			iconStyle: 'background-color:#0000FF',
 			style: function () {
