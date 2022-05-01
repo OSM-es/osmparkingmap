@@ -903,11 +903,11 @@ var config = {
 		
 		},
 
-		// Parking spaces
+		// Parking spaces Delivery
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(250,218,94,0.4);">Delivery</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="delivery"]({{bbox}});node(w););out meta;',
+			query: '(node["capacity:delivery"]({{bbox}});node(w);way["capacity:delivery"]({{bbox}});node(w);relation["capacity:delivery"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="delivery"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pdelivery.svg',
 			iconStyle: 'background-color:rgba(250,218,94,0.4)',
 			style: function () {
@@ -936,7 +936,7 @@ var config = {
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(0,128,0,0.4);">Charging</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="charging"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="parking_space"]["parking_space"="charging"]({{bbox}});node(w);node["amenity"="charging_station"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcharging_station.svg',
 			iconStyle: 'background-color:rgba(0,128,0,0.4)',
 			style: function () {
@@ -2053,50 +2053,6 @@ var config = {
 			}
 },
 
-		// Delivery
-		{
-			group: 'Parking_Lanes',
-			title: 'Delivery',
-			query: '(node["capacity:delivery"]({{bbox}});node(w);way["capacity:delivery"]({{bbox}});node(w);relation["capacity:delivery"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'base/circle.svg',
-			iconStyle: 'background-color:#FBEA00',
-			style: function () {
-				var fill = new ol.style.Fill({
-					color: 'rgba(251,155,2,0.4)'
-				});
-				var stroke = new ol.style.Stroke({
-					color: '#FBEA00',
-					width: 1.25
-				});
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
-					fill: fill,
-					stroke: stroke
-				});
-				return style;
-			}
-		},
-
-		// Charging Station
-		{
-			group: 'Parking_Lanes',
-			title: 'Charging Station',
-			query: '(node["amenity"="charging_station"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones/symbols/amenity/charging_station.svg',
-			style: function (feature) {
-				var src = imgSrc + 'icones/symbols/amenity/charging_station.svg';
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						src: src
-					})
-				});
-				return style;
-			}
-		},
 
 		// Entrance garage
 		{
