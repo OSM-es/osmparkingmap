@@ -2055,8 +2055,8 @@ var config = {
 			iconStyle: 'background-color:#0000ff',
 			style: function (feature) {
 				var key_regex = /^capacity$/
-				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "capacity"
-				var capacity = feature.get(capacity_key) || '';
+				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
+				var name = feature.get(name_key) || '';
 				var fill = new ol.style.Fill({
 					color: 'rgba(0,0,255,0.4)'
 				});
@@ -2072,7 +2072,7 @@ var config = {
 						radius: 5
 					}),
 							text: new ol.style.Text({
-								text: capacity
+								text: name
 							}),
 					fill: fill,
 					stroke: stroke
