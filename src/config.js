@@ -2073,7 +2073,10 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
-								color: 'rgba(255,255,0,1)'
+								color: 'rgba(255,255,255,0.4)',
+								font: '14px Verdana',
+								offsetX : 0,
+								offsetY : 30
 							}),
 					fill: fill,
 					stroke: stroke
