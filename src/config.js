@@ -2001,7 +2001,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(220,20,60,0.4);">Private</span>',
-			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="private"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="private"]({{bbox}});node(w);nwr["amenity"="parking"]["access"="private"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pprivate.svg',
 			iconStyle: 'background-color:rgba(220,20,60,0.4)',
 			style: function () {
