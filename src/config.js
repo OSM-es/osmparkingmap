@@ -1673,7 +1673,7 @@ var config = {
 			}
 		},
 
-		// Parking with fee
+		// Parking without fee
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(0,128,0,0.4);">Without fee</span>',
@@ -1733,7 +1733,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(0,0,0,0.4);">Falta Fee</span>',
-			query: '(nwr["amenity"="parking"][!"fee"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="parking"][!"fee"]["access"!="private"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pfeequestion.svg',
 			iconStyle: 'background-color:rgba(0,0,0,0.4)',
 			style: function () {
