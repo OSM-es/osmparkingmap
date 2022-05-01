@@ -244,22 +244,7 @@ var config = {
 				});
 				return style;
 			}
-    },
-		{
-			group: 'Test',
-			title: 'Stops signs',
-			geojson: 'https://raw.githubusercontent.com/yopaseopor/osmhistoricmap/master/src/img/base/test.geojson',
-			iconSrc: 'https://raw.githubusercontent.com/yopaseopor/beta_preset_josm/master/ES/traffic_signs/ES/ES_R2.png',
-			style: function () {
-				var style = new ol.style.Style({
-					image: new ol.style.Icon({
-						scale: 0.4,
-						src: 'https://raw.githubusercontent.com/yopaseopor/beta_preset_josm/master/ES/traffic_signs/ES/ES_R2.png'
-					})
-				});
-				return style;
-			}
-    },
+		},
 		
 				// Both Ticket
 		{
@@ -2158,7 +2143,47 @@ var config = {
 			
 			}
 
-},
+		},
+
+		
+				// Right Ticket
+		{
+			group: 'Test',
+			title: 'Right Ticket',
+			query: '(way["highway"="residential"]["maxspeed"="30"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="40"]({{bbox}});node(w);way["highway"="residential"]["maxspeed"="50"]({{bbox}});node(w););out skel;',
+			iconSrc: imgSrc + 'base/lineline.png',
+			iconStyle: 'background-color:#0000FF',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000FF',
+					width: 3 ,
+					lineDash: [10, 10]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+		{
+			group: 'Test',
+			title: 'Stops signs',
+			geojson: 'https://raw.githubusercontent.com/yopaseopor/osmhistoricmap/master/src/img/base/test.geojson',
+			iconSrc: 'https://raw.githubusercontent.com/yopaseopor/beta_preset_josm/master/ES/traffic_signs/ES/ES_R2.png',
+			style: function () {
+				var style = new ol.style.Style({
+					image: new ol.style.Icon({
+						scale: 0.4,
+						src: 'https://raw.githubusercontent.com/yopaseopor/beta_preset_josm/master/ES/traffic_signs/ES/ES_R2.png'
+					})
+				});
+				return style;
+			}
+    },
 
 	{
 			group: 'Test',
