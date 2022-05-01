@@ -2047,6 +2047,39 @@ var config = {
 				return style;
 			}
 		},
+		{
+			group: 'Test',
+			title: 'Capacity',
+			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#0000ff',
+			style: function (feature) {
+				var key_regex = /^capacity$/
+				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "capacity"
+				var capacity = feature.get(capacity_key) || '';
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,0,255,0.4)'
+				});
+
+				var stroke = new ol.style.Stroke({
+					color: '#0000ff',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+							text: new ol.style.Text({
+								text: capacity
+							}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+},
 
 		// Left Free
 		{
