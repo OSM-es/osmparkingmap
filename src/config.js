@@ -2078,7 +2078,9 @@ var config = {
 								offsetX : 0,
 								offsetY : 0
 							}),
-					fill: fill,
+					fill: new ol.style.Fill({
+                            color: '#ffffff'
+                        }),
 					stroke: stroke
 				});
 				return style;
