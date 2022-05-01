@@ -2051,18 +2051,18 @@ var config = {
 			group: 'Test',
 			title: 'Capacity',
 			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'base/circle.svg',
-			iconStyle: 'background-color:#0000ff',
+			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
+			iconStyle: 'background-color:rgba(255,255,255,0.4)',
 			style: function (feature) {
 				var key_regex = /^capacity$/
 				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
 				var name = feature.get(name_key) || '';
 				var fill = new ol.style.Fill({
-					color: 'rgba(2,0,255,0.4)'
+					color: 'rgba(255,255,255,0.4)'
 				});
 
 				var stroke = new ol.style.Stroke({
-					color: '#0000ff',
+					color: 'rgba(255,255,255,1)',
 					width: 1.25
 				});
 				var style = new ol.style.Style({
