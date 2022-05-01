@@ -2145,6 +2145,32 @@ var config = {
 
 		},
 
+
+
+		// Left Free
+		{
+			group: 'Parking_Lanes',
+			title: 'Left Free',
+			query: '(way["parking:lane:left"="parallel"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="diagonal"]["parking:condition:left"="free"]({{bbox}});node(w);way["parking:lane:left"="perpendicular"]["parking:condition:left"="free"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/dots.png',
+			iconStyle: 'background-color:#c9c9c9',
+			style: function () {
+				var fill = new ol.style.Fill({
+					color: 'rgba(64,224,208,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#c9c9c9',
+					width: 3 ,
+					lineDash: [.1, 5]
+				});
+				var style = new ol.style.Style({
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},
+
 		
 				// Right Ticket
 		{
