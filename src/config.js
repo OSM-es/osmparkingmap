@@ -1973,7 +1973,7 @@ var config = {
 		{
 			group: 'Parkings',
 			title: '<span style="background-color:rgba(219,112,147,0.4);">Customers</span>',
-			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w););out meta;',
+			query: '(nwr["parking"!~"lane|street_side"]["parking:condition"="customers"]({{bbox}});node(w);way["parking:condition:left"="customers"]({{bbox}});node(w);way["parking:condition:right"="customers"]({{bbox}});node(w);way["parking:condition:both"="customers"]({{bbox}});node(w);nwr["amenity"="parking"]["access"="customers"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcustomers.svg',
 			iconStyle: 'background-color:rgba(219,112,147,0.4)',
 			style: function () {
