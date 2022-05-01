@@ -2072,7 +2072,8 @@ var config = {
 						radius: 5
 					}),
 							text: new ol.style.Text({
-								text: name
+								text: name,
+								color: 'rgba(255,255,255,0.4)'
 							}),
 					fill: fill,
 					stroke: stroke
