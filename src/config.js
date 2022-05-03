@@ -2122,7 +2122,7 @@ var config = {
 		{
 			group: 'Test',
 			title: 'Roads',
-			query: '(nwr[~"^name$"~"."]["area:highway"~"tertiary|tertiary_link"]({{bbox}});node(w););out meta;',
+			query: '(nwr[~"^name$"~"."]["area:highway"~"tertiary|tertiary_link|service"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
 			iconStyle: 'background-color:rgba(0,0,0,0.4)',
 			style: function (feature) {
