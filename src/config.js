@@ -2025,6 +2025,7 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
+								placement: 'line',
 								font: 'small-caps bold 18px/1 sans-serif',
 								offsetX : 0,
 								offsetY : 0,
@@ -2064,6 +2065,7 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
+								placement: 'line',
 								font: 'small-caps bold 18px/1 sans-serif',
 								offsetX : 0,
 								offsetY : 0,
@@ -2103,6 +2105,7 @@ var config = {
 					}),
 							text: new ol.style.Text({
 								text: name,
+								placement: 'line',
 								font: 'small-caps bold 18px/1 sans-serif',
 								offsetX : 0,
 								offsetY : 0,
