@@ -629,7 +629,7 @@ var config = {
 			iconStyle: 'background-color:rgba(192,192,192,0.4)',
 			style: function () {
 				var fill = new ol.style.Fill({
-					color: 'rgba(192,192,192,0.4)'
+					color: 'rgba(192,192,192,1)'
 				});
 				var stroke = new ol.style.Stroke({
 					color: 'rgba(192,192,192,1)',
@@ -797,7 +797,7 @@ var config = {
 		{
 			group: 'Parking spaces',
 			title: '<span style="background-color:rgba(128,128,128,0.4);">Bicycles</span>',
-			query: '(nwr["amenity"="parking_space"]["parking_space"="bicycle"]({{bbox}});node(w););out meta;',
+			query: '(nwr["amenity"="bicycle_parking"]({{bbox}});node(w);nwr["amenity"="parking_space"]["parking_space"="bicycle"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pbicycle.svg',
 			iconStyle: 'background-color:rgba(128,128,128,0.4)',
 			style: function () {
