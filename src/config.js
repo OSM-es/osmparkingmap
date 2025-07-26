@@ -57,7 +57,7 @@ var config = {
 				declutter: true
 			});
 
-			const styleUrl = 'src/customyopaseopor.json';
+			const styleUrl = 'https://osm-es.github.io/osmparkingmap/src/customyopaseopor.json';
 			fetch(styleUrl)
 				.then(response => response.json())
 				.then(style => {
