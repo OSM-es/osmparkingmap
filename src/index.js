@@ -1,409 +1,8 @@
 /* global config, ol */
 $(function () {
-
-    // --- Layer Searcher Integration ---
-    // Remove early addition of 'Translated' overlay group here. It will be added after all overlays are loaded.
-
-    // 1. Flatten base layers into window.layers
-    window.layers = [];
-    if (config && Array.isArray(config.layers)) {
-        config.layers.forEach(function(layerOrGroup) {
-            if (layerOrGroup instanceof ol.layer.Group) {
-                // If it's a group, add all sublayers
-                layerOrGroup.getLayers().forEach(function(subLayer) {
-                    if (subLayer.get && subLayer.get('type') !== 'overlay') {
-                        window.layers.push({
-                            title: subLayer.get('title') || '',
-                            group: layerOrGroup.get('title') || '',
-                            id: subLayer.get('id') || '',
-                            _olLayerGroup: subLayer
-                        });
-                    }
-                });
-            } else if (layerOrGroup.get && layerOrGroup.get('type') !== 'overlay') {
-                // If it's a single layer, add directly
-                window.layers.push({
-                    title: layerOrGroup.get('title') || '',
-                    group: layerOrGroup.get('group') || '',
-                    id: layerOrGroup.get('id') || '',
-                    _olLayerGroup: layerOrGroup
-                });
-            }
-        });
-    }
-    // 2. Define window.renderLayerList - Modified to prevent rendering the layer list
-    window.renderLayerList = function(filtered, query) {
-        // Remove the layer list if it exists
-        $('#layer-list').remove();
-        
-        // If there's a search query, we'll still process the layers but not show them
-        if (query && filtered && filtered.length > 0) {
-            // Find the active layer if any
-            var activeLayer = null;
-            $.each(config.layers, function(indexLayer, layerGroup) {
-                if (layerGroup.get && layerGroup.get('type') !== 'overlay' && layerGroup.getVisible && layerGroup.getVisible()) {
-                    activeLayer = layerGroup;
-                }
-            });
-            
-            // If a layer is being activated, handle it without showing the list
-            filtered.forEach(function(layer) {
-                var isActive = activeLayer && ((layer.id && activeLayer.get('id') === layer.id) || 
-                             (activeLayer.get('title') === layer.title && activeLayer.get('group') === layer.group));
-                
-                // If this is the layer being activated, call activateLayer
-                if (isActive && window.activateLayer) {
-                    window.activateLayer(layer);
-                }
-            });
-        }
-    };
-
-
-    // Render all layers initially
-    $(document).ready(function() {
-        window.renderLayerList(window.layers);
-    });
-    // --- End Layer Searcher Integration ---
-
-    // --- Overlay Searcher Integration ---
-    // 1. Initialize window.allOverlays
-    // window.allOverlays is initialized in overlays/index.js and overlays are imported as arrays, not functions.
-    // Do not re-initialize overlays here. Use window.allOverlays as the source of truth.
-    if (!window.allOverlays) {
-        console.error('window.allOverlays is not defined. Make sure overlays/index.js is loaded before index.js.');
-        window.allOverlays = {};
-    }
-    window.overlays = [];
-    function updateWindowOverlays() {
-        // Only flatten overlays for the overlay searcher
-        window.overlays = Object.entries(window.allOverlays).reduce((acc, [groupName, overlays]) => {
-            if (Array.isArray(overlays)) {
-                return acc.concat(overlays.map(overlay => ({
-                    // Use already translated values
-                    title: overlay.title || '',
-                    group: overlay.group || '',
-                    id: overlay.id || '',
-                    ...overlay
-                })));
-            }
-            return acc;
-        }, []);
-    }
-
-    // Update overlays when they change
-    window.addEventListener('overlaysUpdated', function() {
-        // Overlays are updated by overlays/index.js
-        updateTranslatedOverlayGroup();
-        if (window.updateTranslations) window.updateTranslations();
-        updateWindowOverlays(); // Refresh overlays for searcher
-        if (window.renderOverlayList && window.overlays) window.renderOverlayList(window.overlays);
-        
-        // Rebuild the layers control to update group titles
-        $('.osmcat-menu').remove();
-        $('#menu').prepend(layersControlBuild());
-    });
-    
-    // Store the current UI state
-    function getUIState() {
-        const state = {
-            // Store visible layers
-            visibleLayers: window.config.layers
-                .filter(layer => layer.getVisible())
-                .map(layer => layer.get('title')),
-            // Store expanded overlay groups
-            expandedGroups: []
-        };
-        
-        // Store which overlay groups are expanded
-        $('.osmcat-menu h3').each(function() {
-            const $h3 = $(this);
-            const $content = $h3.next('.osmcat-content');
-            if ($content.is(':visible')) {
-                state.expandedGroups.push($h3.text().trim());
-            }
-        });
-        
-        return state;
-    }
-    
-    // Restore the UI state
-    function restoreUIState(state) {
-        if (!state) return;
-        
-        // Batch layer visibility updates
-        if (state.visibleLayers) {
-            // First, collect all layer updates
-            const updates = [];
-            const layerTitles = new Map();
-            
-            // Create a map of layer titles to their translations
-            window.config.layers.forEach(layer => {
-                const layerTitle = layer.get('title');
-                if (layerTitle) {
-                    layerTitles.set(layerTitle, layer);
-                    // Also store the translated version for matching
-                    const translatedTitle = window.getTranslation ? window.getTranslation(layerTitle) : layerTitle;
-                    if (translatedTitle !== layerTitle) {
-                        layerTitles.set(translatedTitle, layer);
-                    }
-                }
-            });
-            
-            // Process each visible layer from the state
-            state.visibleLayers.forEach(visibleTitle => {
-                const layer = layerTitles.get(visibleTitle);
-                if (layer) {
-                    updates.push({ layer, visible: true });
-                } else {
-                    // Try to find by translated title
-                    const translatedTitle = window.getTranslation ? window.getTranslation(visibleTitle) : visibleTitle;
-                    const translatedLayer = layerTitles.get(translatedTitle);
-                    if (translatedLayer) {
-                        updates.push({ layer: translatedLayer, visible: true });
-                    }
-                }
-            });
-            
-            // Apply all visibility updates in a single batch
-            updates.forEach(({ layer, visible }) => {
-                layer.setVisible(visible);
-            });
-        }
-        
-        // Restore expanded groups
-        if (state.expandedGroups && state.expandedGroups.length > 0) {
-            // Create a set of expanded group titles for faster lookup
-            const expandedGroups = new Set(state.expandedGroups);
-            
-            // Process each group header
-            $('.osmcat-menu h3').each(function() {
-                const $h3 = $(this);
-                const groupTitle = $h3.text().trim();
-                const $content = $h3.next('.osmcat-content');
-                
-                // Check if this group should be expanded
-                const shouldExpand = state.expandedGroups.some(expandedTitle => 
-                    groupTitle === expandedTitle || 
-                    groupTitle === (window.getTranslation ? window.getTranslation(expandedTitle) : expandedTitle) ||
-                    (window.getTranslation ? window.getTranslation(groupTitle) : groupTitle) === expandedTitle
-                );
-                
-                // Use direct DOM manipulation for better performance
-                $content.toggle(shouldExpand);
-                $h3.toggleClass('expanded', shouldExpand);
-            });
-        }
-    }
-    
-    // Listen for language changes
-    window.addEventListener('languageChanged', function() {
-        // Save current scroll position
-        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        
-        // Save current UI state
-        const uiState = getUIState();
-        
-        // Temporarily hide the menu to prevent jumping
-        const $menu = $('.osmcat-menu');
-        const menuHeight = $menu.outerHeight();
-        const $menuPlaceholder = $('<div>').css('height', menuHeight + 'px').css('visibility', 'hidden');
-        $menu.after($menuPlaceholder);
-        
-        // Re-initialize overlays with the new language
-        if (window.getAllOverlays) {
-            // Update the overlays with the new language
-            window.allOverlays = window.getAllOverlays();
-            
-            // Recreate all overlay layers
-            if (window.integrateOverlays) {
-                window.integrateOverlays();
-            }
-            
-            // Update the UI in a way that minimizes jumping
-            requestAnimationFrame(() => {
-                // Remove the old menu
-                $menu.remove();
-                
-                // Create the new menu off-screen
-                const $newMenu = $(layersControlBuild()).css({
-                    position: 'absolute',
-                    left: '-9999px',
-                    top: '0',
-                    visibility: 'hidden'
-                });
-                
-                // Insert the new menu
-                $menuPlaceholder.after($newMenu);
-                
-                // Update the overlay list if the function exists
-                if (window.renderOverlayList && window.overlays) {
-                    window.renderOverlayList(window.overlays);
-                }
-                
-                // Restore the UI state
-                restoreUIState(uiState);
-                
-                // Get the new height after all updates
-                const newHeight = $newMenu.outerHeight();
-                
-                // Update the placeholder height to match the new menu
-                $menuPlaceholder.css('height', newHeight + 'px');
-                
-                // Show the new menu and remove the placeholder
-                requestAnimationFrame(() => {
-                    $newMenu.css({
-                        position: '',
-                        left: '',
-                        top: '',
-                        visibility: ''
-                    });
-                    
-                    $menuPlaceholder.remove();
-                    
-                    // Restore scroll position
-                    window.scrollTo(0, scrollPosition);
-                });
-            });
-        }
-    });
-
-    // Initial update
-    updateWindowOverlays();
-
-    // 2. Define window.renderOverlayList
-    window.renderOverlayList = function(filtered, query) {
-        var $list = $('#overlay-list');
-        $list.empty();
-        // (Removed: clear overlay button is now a map control, not injected here)
-
-        var $list = $('#overlay-list');
-        $list.empty();
-        if (!query || !filtered || !filtered.length) {
-            if (query && (!filtered || !filtered.length)) {
-                $list.append('<div style="padding:8px;color:#888;">No overlays found.</div>');
-            }
-            return;
-        }
-        var activeOverlay = null;
-        
-        // Group overlays by normalized group name to avoid duplicates
-        var groupMap = {};
-        
-        // Process all overlays and organize them by group
-        filtered.forEach(function(overlay) {
-            if (!overlay.group) return;
-            
-            // Normalize group name (lowercase for comparison)
-            var normalizedGroup = overlay.group.toLowerCase();
-            
-            // Initialize group if not exists
-            if (!groupMap[normalizedGroup]) {
-                groupMap[normalizedGroup] = {
-                    displayName: overlay.group, // Keep original case for display
-                    overlays: []
-                };
-            }
-            
-            // Add overlay to group if not already present
-            if (!groupMap[normalizedGroup].overlays.some(o => o.title === overlay.title)) {
-                groupMap[normalizedGroup].overlays.push(overlay);
-            }
-        });
-        
-        // Group overlays by first letter only, show max 10 per letter
-        var letterMap = {};
-        
-        // Convert grouped overlays to flat list for display, prioritizing translated groups
-        Object.values(groupMap).forEach(function(group) {
-            group.overlays.forEach(function(overlay) {
-                var titleOrGroup = (overlay.title || group.displayName || '').trim();
-                var firstLetter = titleOrGroup.charAt(0) ? titleOrGroup.charAt(0).toUpperCase() : '_';
-                if (!letterMap[firstLetter]) letterMap[firstLetter] = [];
-                if (letterMap[firstLetter].length < 10) {
-                    // Use the normalized group display name for consistency
-                    var displayOverlay = {...overlay, group: group.displayName};
-                    letterMap[firstLetter].push(displayOverlay);
-                }
-            });
-        });
-        
-        // Render overlays (max 10 per letter)
-        Object.keys(letterMap).sort().forEach(function(letter) {
-            letterMap[letter].forEach(function(overlay) {
-                var isActive = activeOverlay && ((overlay.id && activeOverlay.get('id') === overlay.id) || (activeOverlay.get('title') === overlay.title && activeOverlay.get('group') === overlay.group));
-                var $item = $('<div>').addClass('overlay-list-item').css({
-                    'display': 'flex',
-                    'align-items': 'center',
-                    'padding': '5px',
-                    'cursor': 'pointer'
-                });
-                
-                // Add icon if available
-                if (overlay.iconSrc) {
-                    $item.append($('<img>')
-                        .attr('src', overlay.iconSrc)
-                        .attr('alt', '')
-                        .css({
-                            'max-width': '30px',
-                            'max-height': '30px',
-                            'width': 'auto',
-                            'height': 'auto',
-                            'margin-right': '10px',
-                            'vertical-align': 'middle'
-                        })
-                    );
-                }
-                
-                // Add text - only show the title in the selected language
-                $item.append($('<span>').text(overlay.title));
-                
-                if (isActive) $item.addClass('active').attr('tabindex', 0);
-                $item.on('click', function() {
-                    window.activateOverlay(overlay);
-                });
-                $list.append($item);
-                if (isActive) {
-                    setTimeout(function(){
-                        $item[0].scrollIntoView({block:'nearest'});
-                        $item.focus();
-                    }, 10);
-                }
-            });
-        });
-    };
-
-
-
-    // Toggle the chosen overlay independently
-    window.activateOverlay = function(overlay) {
-        // Toggle visibility of the selected overlay (by id or by group/title)
-        $.each(config.layers, function(indexLayer, layerGroup) {
-            if (layerGroup.get && layerGroup.get('type') === 'overlay') {
-                $.each(layerGroup.getLayers().getArray(), function(idx, olayer) {
-                    if ((overlay.id && olayer.get('id') === overlay.id) ||
-                        (olayer.get('title') === overlay.title && olayer.get('group') === overlay.group)) {
-                        olayer.setVisible(!olayer.getVisible());
-                    }
-                });
-            }
-        });
-        // Update the overlay list UI with all overlays
-        if (window.renderOverlayList) {
-            window.renderOverlayList(window.overlays, '');
-        }
-    };
-
-    // Render all overlays initially
-    $(document).ready(function() {
-        window.renderOverlayList(window.overlays);
-    });
-    // --- End Overlay Searcher Integration ---
-
-
 	$('#map').empty(); // Remove Javascript required message
 	var baseLayerIndex = 0;
-	
+
 	//Object to manage the spinner layer
 	var loading = {
 		init: function () {
@@ -537,8 +136,6 @@ $(function () {
 		window.location.hash.replace(/[#?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
 			vars[key] = value;
 		});
-		
-		
 
 		// map = zoom, center (lon, lat), [rotation]
 		var mapParam = getUrlParam('map', ''), parts;
@@ -585,32 +182,6 @@ $(function () {
 		view: view
 	});
 
-	// Initialize Nominatim search
-	initNominatimSearch(map);
-
-	// Initialize PanoraMax viewer
-	initPanoraMaxViewer(map);
-
-	// Initialize Mapillary viewer
-	initMapillaryViewer(map);
-
-    // Ensure window.initRouter is set after router.js loads
-    if (typeof window.initRouter !== 'function' && typeof initRouter === 'function') {
-        window.initRouter = initRouter;
-    }
-
-    // Always show and activate the .osmcat-router button (no random button)
-    $(".osmcat-routerbutton").remove(); // Remove any previous router controls
-    // Ensure the router menu is always shown and active
-    if (typeof window.initRouter === 'function') {
-        window.initRouter(map);
-    } else {
-        alert('Router module is not loaded.');
-    }
-    $('.osmcat-menu').addClass('router-active');
-    $('.osmcat-router').addClass('active');
-
-
 	var layersControlBuild = function () {
 		var visibleLayer,
 			previousLayer,
@@ -632,16 +203,8 @@ $(function () {
 
 		config.layers.forEach(layer => {
 			if (layer.get('type') === 'overlay') {
-				// Get the translated title, fallback to original title if translation not available
-				const originalTitle = layer.get('originalTitle') || layer.get('title');
-				const title = window.getTranslation ? window.getTranslation(originalTitle) : originalTitle;
-				
-				// Ensure the layer's title is up to date
-				if (layer.get('title') !== title) {
-					layer.set('title', title);
-				}
-				
-				var layerButton = $('<h3>').html(title),
+				var title = layer.get('title'),
+					layerButton = $('<h3>').html(title),
 					overlayDivContent = $('<div>').addClass('osmcat-content osmcat-overlay overlay' + overlayIndex);
 
 				overlaySelect.append($('<option>').val('overlay' + overlayIndex).text(title));
@@ -654,25 +217,20 @@ $(function () {
 							var visible = overlay.getVisible();
 							overlay.setVisible(!visible);
 							updatePermalink();
-						}),
-						checkbox = $('<input type="checkbox">').css({marginRight:'6px'});
-					
-					checkbox.prop('checked', overlay.getVisible());
-					checkbox.on('change', function() {
-						overlay.setVisible(this.checked);
-						updatePermalink();
-					});
-					overlayButton.prepend(checkbox);
-					overlay.on('change:visible', function() {
-						checkbox.prop('checked', overlay.getVisible());
+						});
+					overlayDivContent.append(overlayButton);
+					if (overlay.getVisible()) {
+						overlayButton.addClass('active');
+					}
+					overlay.on('change:visible', function () {
 						if (overlay.getVisible()) {
 							overlayButton.addClass('active');
 						} else {
 							overlayButton.removeClass('active');
 						}
 					});
-					overlayDivContent.append(overlayButton);
 				});
+
 				overlayDiv.append(overlayDivContent);
 				overlayDiv.show();
 				overlayIndex++;
@@ -702,23 +260,23 @@ $(function () {
 
 					layer.set('layerIndex', layerIndex);
 
-					// Add checkbox for enabling/disabling layer
-					var checkbox = $('<input type="checkbox">').css({marginRight:'6px'});
-					checkbox.prop('checked', layer.getVisible());
-					checkbox.on('change', function() {
-						layer.setVisible(this.checked);
-					});
-					layerButton.prepend(checkbox);
-
-					content.append(layerButton);
-					layer.on('change:visible', function () {
-						checkbox.prop('checked', layer.getVisible());
-						if (layer.getVisible()) {
-							layerButton.addClass('active');
-						} else {
-							layerButton.removeClass('active');
-						}
-					});
+				content.append(layerButton);
+				if (layer.getVisible()) {
+					if (visibleLayer === undefined) {
+						layerButton.addClass('active');
+						visibleLayer = layer;
+						baseLayerIndex = layerIndex;
+					} else {
+						layer.setVisible(false);
+					}
+				}
+				layer.on('change:visible', function () {
+					if (layer.getVisible()) {
+						layerButton.addClass('active');
+					} else {
+						layerButton.removeClass('active');
+					}
+				});
 				layerIndex++;
 			}
 		});
@@ -729,11 +287,7 @@ $(function () {
 		return container;
 	};
 
-    $('#menu').append(layersControlBuild());
-    // Optionally, re-render layers after layersControl if needed
-    if (window.renderLayerList && window.layers) window.renderLayerList(window.layers);
-    // Optionally, re-render overlays after overlaysControl if needed
-    if (window.renderOverlayList && window.overlays) window.renderOverlayList(window.overlays);
+	$('#menu').append(layersControlBuild());
 
 	map.addControl(new ol.control.MousePosition({
 		coordinateFormat: function (coordinate) {
@@ -742,26 +296,7 @@ $(function () {
 		projection: 'EPSG:4326'
 	}));
 	map.addControl(new ol.control.ScaleLine({units: config.initialConfig.units}));
-    // Overlay summary control (positioned next to scale bar)
-    var overlaySummaryDiv = $('<div>').addClass('ol-control ol-unselectable overlay-summary-control').css({
-        // Positioning handled by CSS
-    });
-    var overlaySummaryControl = new ol.control.Control({
-        element: overlaySummaryDiv[0]
-    });
-    map.addControl(overlaySummaryControl);
-    // Expose global setter
-    window.setOverlaySummary = function(text) {
-        if (text) {
-            overlaySummaryDiv.text(text).show();
-        } else {
-            overlaySummaryDiv.hide();
-        }
-    };
-    map.addControl(new ol.control.ZoomSlider());
-	
-
-
+	map.addControl(new ol.control.ZoomSlider());
 
 	// Geolocation Control
 	// In some browsers, this feature is available only in secure contexts (HTTPS)
@@ -789,60 +324,14 @@ $(function () {
 		}));
 		return container[0];
 	};
-
-	// Clear Overlay Control
-	var clearOverlayControlBuild = function () {
-		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-clearoverlaybutton').html(
-			$('<button type="button" class="clear-active-overlay-btn" title="Clear Active Overlay"><i class="fa fa-times"></i></button>').on('click', function () {
-				// Hide all overlays
-				$.each(config.layers, function(indexLayer, layerGroup) {
-					if (layerGroup.get && layerGroup.get('type') === 'overlay') {
-						$.each(layerGroup.getLayers().getArray(), function(idx, olayer) {
-							if (olayer.setVisible) olayer.setVisible(false);
-						});
-					}
-				});
-				if (window.renderOverlayList) window.renderOverlayList([], '');
-				$('#overlay-search').val('');
-                    if (window.updateOverlaySummary) window.updateOverlaySummary();
-			})
-		);
-		return container[0];
-	};
-
 	map.addControl(new ol.control.Control({
-        element: geolocationControlBuild()
-    }));
-    // Add Clear Overlay control just after Rotate control (if present)
-    // Try to find the rotate control element and insert after it
-    setTimeout(function() {
-        var rotateControl = $('.ol-rotate');
-        var clearOverlayControl = $(clearOverlayControlBuild());
-        if (rotateControl.length) {
-            rotateControl.after(clearOverlayControl);
-        } else {
-            // fallback: add to map as usual
-            $('#map').append(clearOverlayControl);
-        }
-    }, 0);
-
-	
-	
-	// Como crear un control
-	//@@ poner un número extra a la var | var infoControlBuild2 = function () {
-	//@@ revisar osmcat-infobutton2 	var container = $('<div>').addClass('ol-control ol-unselectable osmcat-infobutton2').html($('<button type="button"><i class="fa fa-search-plus"></i></button>').on('click', function () {
-	//		window.location.href = 'https://mapcomplete.osm.be/index.html?userlayout=https://raw.githubusercontent.com/yopaseopor/mcquests/master/limits.json';
-	//	}));
-	//	return container[0];
-	//};
-	//map.addControl(new ol.control.Control({
-	//	element: infoControlBuild2()
-	//}));
+		element: geolocationControlBuild()
+	}));
 
 	// Info Control
 	var infoControlBuild = function () {
 		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-infobutton').html($('<button type="button"><i class="fa fa-info-circle"></i></button>').on('click', function () {
-			window.location.href = 'https://github.com/yopaseopor/osmutils';
+			window.location.href = 'https://github.com/osm-es/osmparkingmap';
 		}));
 		return container[0];
 	};
@@ -850,6 +339,17 @@ $(function () {
 		element: infoControlBuild()
 	}));
 	
+		// Info Control
+	var infoControlBuild2 = function () {
+		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-infobutton2').html($('<button type="button"><i class="fa fa-search-plus"></i></button>').on('click', function () {
+			window.location.href = 'https://mapcomplete.osm.be/index.html?userlayout=https://raw.githubusercontent.com/yopaseopor/mcquests/main/parkingspaces.json';
+		}));
+		return container[0];
+	};
+	map.addControl(new ol.control.Control({
+		element: infoControlBuild2()
+	}));
+
 	// Copy permalink button
 	var permalinkControlBuild = function () {
 		var container = $('<div>').addClass('ol-control ol-unselectable osmcat-sharebutton').html($('<button type="button"><i class="fa fa-share-alt-square"></i></button>').on('click', function () {
@@ -881,7 +381,6 @@ $(function () {
 	map.addControl(new ol.control.Control({
 		element: permalinkControlBuild()
 	}));
-
 
 	// Rotate left button
 	var rotateleftControlBuild = function () {
@@ -1009,28 +508,12 @@ $(function () {
 	var selectedFeature = null;
 	map.on('pointermove', function (evt) {
 		if (selectedFeature !== null) {
-			if (typeof selectedFeature.setStyle === 'function') {
-                selectedFeature.setStyle(undefined);
-            }
+			selectedFeature.setStyle(undefined);
 			selectedFeature = null;
 			$('#map').css('cursor', 'grab');
 		}
 		map.forEachFeatureAtPixel(evt.pixel, function (feature) {
 			selectedFeature = feature;
-			// Get the original style
-			let originalStyle = feature.getStyle ? feature.getStyle() : null;
-			// If the style is a plain object (from JSON), convert it
-			if (originalStyle && !(originalStyle instanceof ol.style.Style)) {
-				// If it's an array, convert each element
-				if (Array.isArray(originalStyle)) {
-					originalStyle = originalStyle.map(s => (s instanceof ol.style.Style) ? s : new ol.style.Style(s));
-				} else {
-					originalStyle = new ol.style.Style(originalStyle);
-				}
-			}
-			if (feature && typeof feature.setStyle === 'function') {
-				feature.setStyle(originalStyle);
-			}
 			$('#map').css('cursor', 'pointer');
 			return true;
 		});
@@ -1075,68 +558,6 @@ $(function () {
 	});
 });
 
-// Listen for overlay toggles and update summary
-window.addEventListener('overlayToggled', function(e) {
-    // Count all visible overlay features
-    var total = 0;
-    var overlaysActive = 0;
-    (window.config.layers || []).forEach(function(layerGroup) {
-        if (layerGroup.get && layerGroup.get('type') === 'overlay') {
-            layerGroup.getLayers().getArray().forEach(function(layer) {
-                if (layer.getVisible() && layer.getSource && typeof layer.getSource === 'function') {
-                    var source = layer.getSource();
-                    if (source && typeof source.getFeatures === 'function') {
-                        var count = source.getFeatures().length;
-                        if (count > 0) overlaysActive++;
-                        total += count;
-                    }
-                }
-            });
-        }
-    });
-    if (overlaysActive > 0) {
-        window.setOverlaySummary(overlaysActive + ' overlay' + (overlaysActive > 1 ? 's' : '') + ', ' + total + ' feature' + (total !== 1 ? 's' : ''));
-    } else {
-        window.setOverlaySummary('');
-    }
-});
-
-// New summary update function
-function updateOverlaySummary() {
-    var total = 0;
-    var overlaysActive = 0;
-    (window.config.layers || []).forEach(function(layerGroup) {
-        if (layerGroup.get && layerGroup.get('type') === 'overlay') {
-            layerGroup.getLayers().getArray().forEach(function(layer) {
-                if (layer.getVisible() && layer.getSource && typeof layer.getSource === 'function') {
-                    var source = layer.getSource();
-                    if (source && typeof source.getFeatures === 'function') {
-                        var count = source.getFeatures().length;
-                        if (count > 0) overlaysActive++;
-                        total += count;
-                    }
-                }
-            });
-        }
-    });
-    if (overlaysActive > 0) {
-        window.setOverlaySummary(overlaysActive + ' overlay' + (overlaysActive > 1 ? 's' : '') + ', ' + total + ' feature' + (total !== 1 ? 's' : ''));
-    } else {
-        window.setOverlaySummary('');
-    }
-}
-
-// Trigger summary update on relevant events
-window.addEventListener('overlayToggled', updateOverlaySummary);
-window.addEventListener('overlaysReady', function() {
-    setTimeout(updateOverlaySummary, 1500);
-});
-window.addEventListener('overlaysFullyLoaded', function() {
-    setTimeout(updateOverlaySummary, 1500);
-});
-$(function() { 
-    setTimeout(updateOverlaySummary, 1000);
-});
 function linearColorInterpolation(colorFrom, colorTo, weight) {
 	var p = weight < 0 ? 0 : (weight > 1 ? 1 : weight),
 		w = p * 2 - 1,
@@ -1145,4 +566,3 @@ function linearColorInterpolation(colorFrom, colorTo, weight) {
 		rgb = [Math.round(colorTo[0] * w1 + colorFrom[0] * w2), Math.round(colorTo[1] * w1 + colorFrom[1] * w2), Math.round(colorTo[2] * w1 + colorFrom[2] * w2)];
 	return rgb;
 }
-window.addEventListener('overlayFeaturesLoaded', updateOverlaySummary);
