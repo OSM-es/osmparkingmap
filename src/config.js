@@ -1813,6 +1813,10 @@ style: function (feature) {
                 fill: new ol.style.Fill({
                             color: 'rgba(240,240,240,1)'
                         }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(0,0,0,1)',
+                    width: 2
+                }),
                 // For polygons, we'll use a different placement strategy
                 placement: isPolygon ? 'point' : 'point'
             }),
