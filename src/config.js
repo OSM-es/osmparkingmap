@@ -1734,7 +1734,7 @@ var config = {
 			}
 		},
 		{
-			group: 'Parking spaces',
+			group: 'Test',
 			title: 'Capacity',
 			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
@@ -1771,47 +1771,7 @@ var config = {
 					stroke: stroke
 				});
 				return style;
-			}
-		},
-		{
-			group: 'Parking spaces',
-			title: 'Capacity',
-			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
-			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
-			iconStyle: 'background-color:rgba(255,215,0,0.4)',
-			style: function (feature) {
-				var key_regex = /^capacity$/
-				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
-				var name = feature.get(name_key) || '';
-				var fill = new ol.style.Fill({
-					color: 'rgba(0,0,0,0.4)'
-				});
-
-				var stroke = new ol.style.Stroke({
-					color: 'rgba(0,0,0,1)',
-					width: 1.25
-				});
-
-				var style = new ol.style.Style({
-					image: new ol.style.Circle({
-						fill: fill,
-						stroke: stroke,
-						radius: 5
-					}),
-							text: new ol.style.Text({
-								text: name,
-								font: 'small-caps bold 18px/1 sans-serif',
-								offsetX : 0,
-								offsetY : 0,
-								fill: new ol.style.Fill({
-                            color: 'rgba(255,255,255,1)'
-                        }),
-							}),
-					fill:  fill,
-					stroke: stroke
-				});
-				return style;
-			}
+			}	
 		},
 /*   abrir */							{
 			group: 'Parking spaces',
@@ -1851,12 +1811,8 @@ style: function (feature) {
                 offsetY: isPolygon ? -15 : 0, // Move text up for polygons
                 overflow: true, // Allow text to be rendered outside the view
                 fill: new ol.style.Fill({
-                            color: 'rgba(255,255,230,1)'
+                            color: 'rgba(240,240,240,1)'
                         }),
-                stroke: new ol.style.Stroke({
-                    color: 'rgba(255,255,255,0.7)',
-                    width: 2
-                }),
                 // For polygons, we'll use a different placement strategy
                 placement: isPolygon ? 'point' : 'point'
             }),
