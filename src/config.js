@@ -1751,6 +1751,10 @@ var config = {
 					color: 'rgba(0,0,0,1)',
 					width: 1.25
 				});
+				// Get the geometry type
+        var geom = feature.getGeometry();
+        var isPolygon = geom.getType() === 'Polygon' || geom.getType() === 'MultiPolygon';
+		
 				var style = new ol.style.Style({
 					image: new ol.style.Circle({
 						fill: fill,
@@ -1763,9 +1767,16 @@ var config = {
 								offsetX : 0,
 								offsetY : 0,
 								fill: new ol.style.Fill({
-                            color: 'rgba(255,255,255,1)'
+                            color: 'rgba(255,255,230,1)'
                         }),
 							}),
+                // For polygons, we'll use a different placement strategy
+                placement: isPolygon ? 'point' : 'point',
+				textAlign: 'center',
+                textBaseline: 'bottom',
+                offsetY: isPolygon ? -15 : 0, // Move text up for polygons
+                overflow: true // Allow text to be rendered outside the view
+            }),
 					fill:  fill,
 					stroke: stroke
 				});
