@@ -1830,13 +1830,16 @@ style: function (feature) {
 /*   abrir */							{
 			group: 'Capacity',
 			title: 'Capacity (motorcycle)',
-			query: '(nwr[~"^capacity:motorcycle"~"."]["amenity"~"parking$"]({{bbox}});node(w););out meta;',
+			query: '(nwr[~"^capacity$"~"."]["amenity"~"^parking$"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
 			iconStyle: 'background-color:rgba(255,215,0,0.4)',
 style: function (feature) {
 				var key_regex = /^capacity$/
 				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
 				var name = feature.get(name_key) || '';
+				var key_regex2 = /^capacity:motorcycle$/
+				var name_key2 = feature.getKeys().filter(function(t){return t.match(key_regex2)}).pop() || "name2"
+				var name2 = feature.get(name2_key) || '';
 				var fill = new ol.style.Fill({
 					color: 'rgba(0,0,0,0.4)'
 				});
@@ -1877,8 +1880,34 @@ style: function (feature) {
             fill: fill,
             stroke: stroke
         });
-        
-        return style;
+         var style2 = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+            text: new ol.style.Text({
+                text: name2,
+				font: 'small-caps bold 18px/1 sans-serif',
+                // Position text above the polygon
+                textAlign: 'center',
+                textBaseline: 'bottom',
+                offsetY: isPolygon ? -20 : 0, // Move text up for polygons
+                overflow: true, // Allow text to be rendered outside the view
+                fill: new ol.style.Fill({
+                            color: 'rgba(200,200,200,1)'
+                        }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(0,0,0,1)',
+                    width: 2
+                }),
+                // For polygons, we'll use a different placement strategy
+                placement: isPolygon ? 'point' : 'point'
+            }),
+            fill: fill,
+            stroke: stroke
+        });
+        return [style, style2];
     }
 /*@@ fin-inicio de copia */			},
 
