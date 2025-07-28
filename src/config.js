@@ -1830,7 +1830,7 @@ style: function (feature) {
 /*   abrir */							{
 			group: 'Capacity',
 			title: 'Capacity (motorcycle)',
-			query: '(nwr[~"^capacity$"~"."]["amenity"~"^parking$"]({{bbox}});node(w););out meta;',
+			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w);nwr[~"^capacity$"~"."]["amenity"="motorcycle_parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
 			iconStyle: 'background-color:rgba(255,215,0,0.4)',
 style: function (feature) {
