@@ -1774,7 +1774,7 @@ var config = {
 			}	
 		},
 /*   abrir */							{
-			group: 'Parking spaces',
+			group: 'Capacity',
 			title: 'Capacity',
 			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
