@@ -1830,7 +1830,7 @@ style: function (feature) {
 /*   abrir */							{
 			group: 'Capacity',
 			title: 'Capacity (motorcycle)',
-			query: '(nwr[~"^capacity$"~"."]["amenity"="parking"]({{bbox}});node(w););out meta;',
+			query: '(nwr[~"^capacity$"~"."]["amenity"~"^parking$"]({{bbox}});node(w););out meta;',
 			iconSrc: imgSrc + 'icones_parking/pcapacity.svg',
 			iconStyle: 'background-color:rgba(255,215,0,0.4)',
 style: function (feature) {
@@ -1839,7 +1839,7 @@ style: function (feature) {
 				var name = feature.get(name_key) || '';
 				var key_regex2 = /^capacity:motorcycle$/
 				var name_key2 = feature.getKeys().filter(function(t){return t.match(key_regex2)}).pop() || "name2"
-				var name2 = feature.get(name2_key) || '';
+				var name2 = feature.get(name_key2) || '';
 				var fill = new ol.style.Fill({
 					color: 'rgba(0,0,0,0.4)'
 				});
