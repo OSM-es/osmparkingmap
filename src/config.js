@@ -1865,7 +1865,7 @@ style: function (feature) {
                 // Position text above the polygon
                 textAlign: 'center',
                 textBaseline: 'bottom',
-                offsetY: isPolygon ? -15 : 0, // Move text up for polygons
+                offsetY: isPolygon ? -30 : 0, // Move text up for polygons
                 overflow: true, // Allow text to be rendered outside the view
                 fill: new ol.style.Fill({
                             color: 'rgba(240,240,240,1)'
@@ -1891,8 +1891,8 @@ style: function (feature) {
 				font: 'small-caps bold 18px/1 sans-serif',
                 // Position text above the polygon
                 textAlign: 'center',
-                textBaseline: 'bottom',
-                offsetY: isPolygon ? 15 : 0, // Move text up for polygons
+                textBaseline: 'top',
+                offsetY: isPolygon ? 30 : 0, // Move text up for polygons
                 overflow: true, // Allow text to be rendered outside the view
                 fill: new ol.style.Fill({
                             color: 'rgba(200,200,200,1)'
